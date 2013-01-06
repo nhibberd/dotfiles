@@ -31,8 +31,6 @@ esac
 
 [ -x /usr/games/fortune ] && /usr/games/fortune -a && echo ''
 
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-
 mesg y
 
 echo Finished .zprofile
