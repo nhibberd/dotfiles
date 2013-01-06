@@ -1,0 +1,104 @@
+#
+# TTY modes.  Oh, such fun!
+#
+# Use the BSD stty variant to get job control, or at least the ability
+# to set the susp/dsusp characters and other BSD goodies.
+#
+case "$MACHINE_TYPE" in
+    pyramid)
+	alias stty='ucb stty'
+	;;
+    mips)
+	alias stty='/bsd43/bin/stty'
+	;;
+esac
+
+#
+# I've seen systems with all sorts of junk for these values.
+#
+stty erase '^?' intr '^c' quit '^\' kill '^u'
+# Do I need this crap?
+#stty hupcl ixon -ixany -ixoff echoe
+
+case $MACHINE_TYPE in
+    mips)
+	#
+	# This stuff seems pretty necessary under RiscOS 4.52.
+	#
+	stty new crt -decctlq
+	stty erase '^?' intr '^c' kill '^u'
+	;;
+    sun*)
+	stty -decctlq
+	#
+	# Telnetd is crap and doesn't negotiate the screen size.
+	# Assume that only Xterms are variable in size.
+	# Excuse the horrid syntax; life conspires against me.
+	#
+	case "$TERM" in
+	    xterm*)
+		if { ( stty all > /dev/tty ) 2>&1 | grep -s ", 0 rows"; }
+		then
+		    stty rows 24 cols 80
+		fi
+		;;
+	esac
+	;;
+    pyramid)
+	#
+	# Go the whole hog here, as seldom is any of this right by default.
+	#
+	stty new crt -decctlq
+	stty erase '^?' kill '^u' intr '^c' quit '^\'
+	stty start '^q' stop '^s' susp '^z' dsusp '^y'
+	stty rprnt '^r' flush '^o' werase '^w' lnext '^v'
+	;;
+    solaris) 
+	stty hupcl
+	#
+	# Telnetd is crap before Solaris 2.5 and doesn't negotiate the screen
+	# size.  Assume that only Xterms are variable in size.
+	#
+	stty ixany
+	case "$TERM" in
+	    xterm*)
+		case `uname -r` in
+		    5.[0-4]*)
+			stty rows 24 cols 80 ;;
+		esac
+	esac
+	;;
+    *BSD*)
+	# When using telnet in line mode, the pty has extproc set in the stty
+	# modes.  ^T (status) can be passed to the remote system as AYT, if
+	# you are lucky.  Since this doesn't work from a Solaris box, I want
+	# to automatically disable linemode, which you can do if you disable
+	# extproc.
+	#
+	# However, due to a bug in kern/tty_pty.c, we have to turn it on
+	# first, then turn it off.  In fact, we have to turn it on then off
+	# before telnetd gets time to read the pty.  The best we can hope for
+	# is that this bug is only on slow hardware, like pandora.  Amusingly,
+	# another bug, in stty, requires us to set another option before
+	# extproc can be turned on.  Without all this dancing about, one end
+	# can be in line mode, and the other not, causing extra echoing of
+	# all commands and the total failure of character-at-a-time commands
+	# like vi.
+	#
+	# The tty_pty.c bug was fixed in FreeBSD 2.1.5, and the stty bug was
+	# fixed in FreeBSD 2.2.
+	#
+	# PS: Bastard POSIX weenies took the System5 grep -s over the BSD
+	# version.  Grr.
+	#
+	stty status '^t'
+	if hostname | grep 'gov\.au$' > /dev/null
+	then
+	    if stty | grep extproc > /dev/null
+	    then
+		stty status '^t' extproc
+		stty -extproc
+	    fi
+	fi
+	;;
+esac

@@ -1,0 +1,176 @@
+# Directory stack functions
+# Stephen McKay  17 Aug 87
+# Adapted to MKS    May 88
+# Adapted to pdksh  Jul 92 (does not support array variables)
+# Ported to zsh  21 Jul 93 (positional vars always exist, even if empty)
+
+# Uses a variables of the form DIRSTACK_n to hold all the entries.
+# Note: the current directory is not held in the DIRSTACK
+
+DIRSIZE=0
+
+# Searches the directory stack for duplicates and discards them
+ 
+fixstack()
+    {
+    integer s
+    integer d
+
+    s=0
+    d=0
+    while \[ $s -lt $DIRSIZE ]
+    do
+	eval dir="\$DIRSTACK_$s"
+	if \[ -n "$dir" -a "X$dir" != "X$PWD" ]
+	then
+	    \[ $d != $s ] && eval DIRSTACK_$d='"$dir"'
+	    (( d=d+1 ))
+	fi
+	(( s=s+1 ))
+    done
+    DIRSIZE=$d
+    }
+
+# Given a single argument, pushd chdirs to the first argument, and saves
+# it on the current directory stack, bearing in mind that it might
+# have to remove duplicates of the current directory from the stack
+
+pushd()
+    {
+    fixstack
+    case $# in
+	0)
+	    cd || return 1 ;;
+	1)
+	    cd "$1" || return 1 ;;
+	*)
+	    print 'Usage: pushd [dir]'
+	    return 1 ;;
+    esac
+    eval DIRSTACK_$DIRSIZE='"$OLDPWD"'
+    (( DIRSIZE=DIRSIZE+1 ))
+    dirs
+    return 0
+    }
+
+
+# Given a positive number (default 1), popd discards the given number of
+# entries from the directory stack.
+
+popd()
+    {
+    integer num
+    integer j
+
+    num="${1:-1}"
+    \[ $num -lt 1 ] && { print popd: bad argument; return 1; }
+    \[ $DIRSIZE -lt $num ] && { print popd: stack empty; return 1; }
+
+    (( j=DIRSIZE-num ))
+    while :
+    do
+	eval dir="\$DIRSTACK_$j"
+	cd "$dir" && break
+	\[ $j -eq 0 ] && { cd; break; }
+	(( j=j-1 ))
+    done
+    DIRSIZE=$j
+    dirs
+    return 0
+    }
+
+
+# Given a positive number (default 1), swapd brings the given directory
+# to the top of the directory stack.
+
+swapd()
+    {
+    integer num
+    integer j
+    typeset save
+
+    fixstack
+    num="${1:-1}"
+    \[ $num -lt 1 ] && { print swapd: bad argument; return 1; }
+    \[ $DIRSIZE -lt $num ] && { print swapd: stack empty; return 1; }
+
+    (( j=DIRSIZE-num ))
+    eval save="\$DIRSTACK_$j"
+
+    (( k=j+1 ))
+    while \[ $k -lt $DIRSIZE ]
+    do
+#	eval dir="\$DIRSTACK_$k"
+#	eval DIRSTACK_$j='"$dir"'
+	eval DIRSTACK_$j="\"\$DIRSTACK_$k\""
+	(( j=j+1 ))
+	(( k=k+1 ))
+    done
+    eval DIRSTACK_$j='"$PWD"'
+    cd "$save" || (( DIRSIZE=DIRSIZE-1 ))
+    dirs
+    return 0
+    }
+
+# Removes numbered elements from stack
+
+delete()
+    {
+    typeset any=false;
+    integer k;
+
+    for j
+    do
+	case "$j" in
+	    [1-9]|[1-9][0-9])
+		if \[ "$DIRSIZE" -ge "$j" ]
+		then
+		    (( k=DIRSIZE-j ))
+		    eval DIRSTACK_$k='""'
+		    any=true
+		else
+		    echo delete: too big!
+		fi
+		;;
+	    *)
+		echo delete: Bad argument
+		;;
+	    esac
+    done
+    $any && dirs
+    }
+
+
+# Displays the directory stack
+
+dirs()
+    {
+    integer j
+    integer k
+
+    fixstack
+
+    if \[ " $1" = " -l" ]
+    then
+	n=
+	m=-n
+    else
+	n=-n
+	m=
+    fi
+	
+    print $n 0="${PWD#$HOME/} "
+#   print $n 0="${PWD#c:/usr/mckay/} "
+
+    j=$DIRSIZE
+    k=1
+    while \[ $j -gt 0 ]
+    do
+	(( j=j-1 ))
+	eval dir="\$DIRSTACK_$j"
+ 	print $n $k="${dir#$HOME/} "
+#	print $n $k="${DIRSTACK[j]#c:/usr/mckay/} "
+	(( k=k+1 ))
+    done
+    print $m ""
+    }

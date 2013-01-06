@@ -1,0 +1,71 @@
+#
+# Zsh quirks department
+#
+#
+# -rw-------  1 syssgm  wheel  3176 Jul 21  1993 zdirs
+# -rw-r--r--  1 syssgm  wheel   577 Jan  7  1997 zmachine
+# -rw-r--r--  1 syssgm  wheel   861 Jan 18  1999 zpath
+# -rw-r--r--  1 syssgm  wheel   898 Jan  7  1999 zprofile
+# -rw-r--r--  1 syssgm  wheel   468 Jan  7  1997 zprompt
+# -rw-r--r--  1 syssgm  wheel   874 Jan  6  1997 zquirks
+# -rw-r--r--  1 syssgm  wheel  6250 Jun 15 12:05 zshrc
+# -rw-r--r--  1 syssgm  wheel  2729 Feb  3  1997 ztty
+
+# 1997-01-06	sgm   Split off from main profile.
+# 1999-08-10	sgm   # has to be a comment!
+# 2000-04-18	sgm   Version 3.1.* has trouble again with the ESC key.
+# 2000-04-18	sgm   I've never liked the ^L (clear screen) effect.
+# 2007-06-06    mth   Forked sgm. Emacs mode. History.
+
+
+
+# Old versions use $VERSION, but new ones use $ZSH_VERSION.
+case "${ZSH_VERSION-$VERSION}" in
+    'zsh v2.3'*)
+	bindkey -a  undefined-key	# Remove <ESC><ESC><key> horrors.
+	;;
+    2.6-beta*|2.7*)
+	bindkey -a / vi-history-search-backward	# They swapped
+	bindkey -a \? vi-history-search-forward	#   these around!!!
+	;;
+    3.1.*|[4-9].*)
+	bindkey -a  redisplay		# Safe, if not exciting.
+	;;
+esac
+bindkey -a \* expand-or-complete	# Just like ksh.
+bindkey -a _ insert-last-word		# Just like ksh, almost.
+bindkey -a  undefined-key		# Out with clear-screen!
+bindkey -v  undefined-key		# Out with clear-screen!
+
+
+set -o bgnice
+set -o monitor
+unsetopt notify
+set -H					# Kill that annoying 'rm *' stuff
+
+NULLCMD=:				# Null write command, ie '> foo'
+READNULLCMD=cat				# Null read command, ie 'echo $(<foo)'
+setopt numeric_glob_sort
+setopt auto_remove_slash
+setopt auto_list no_list_beep
+setopt interactive_comments
+setopt -B
+#setopt print_exit_value
+
+# Yummy VI editing mode.
+# bindkey -v
+# set -o vi
+
+# or not...
+set -o emacs                           
+bindkey -e
+
+# History tweaks...
+set +K                                  # BANG_HIST  
+HISTSIZE=2000
+SAVEHIST=2000
+HISTFILE=$HOME/.history 
+export HISTSIZE SAVEHIST HISTFILE
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt BANG_HIST

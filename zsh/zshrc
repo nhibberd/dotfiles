@@ -1,0 +1,73 @@
+#
+# .zshrc
+#
+#
+# 2007-06-06    mth     Forked from sgm zsh scripts.
+# 2011-04-08    mth     Pulled out zfunctions, zalias, zcompletion.
+#
+#
+
+echo Reading $ZDOTDIR/.zshrc > /dev/tty
+
+umask 022
+
+# In the wild land of internationalisation, we count as foreign.  Pick
+# the right type of foreign to match us or we get those fuckface US dates.
+export LANG=en_AU.UTF-8
+#export LC_TIME=en_DK	# Works for ... ?  Linux? MacOSX?
+
+[ x"$TERM" = x"xterm-color" ] && TERM=xterm
+[ -f $HOME/.etc/termcap ] && export TERMCAP=$HOME/.etc/termcap
+[ -d $HOME/.terminfo ] && export TERMINFO=$HOME/.terminfo
+
+. "$ZDOTDIR/.zsh/zpath"
+. "$ZDOTDIR/.zsh/zprompt"
+. "$ZDOTDIR/.zsh/zquirks"
+. "$ZDOTDIR/.zsh/zfunctions"
+. "$ZDOTDIR/.zsh/zalias"
+. "$ZDOTDIR/.zsh/zcompletion"
+. "$ZDOTDIR/.zsh/zkeybinding"  #destroyed modkey
+
+# Zsh will allow "cd localsubdir" even if CDPATH doesn't have "." or "" in it.
+# But, without "." or null path, /bin/sh cd will fail on local subdirectories.
+# As of version 3, zsh will print the path name of even local subdirectories
+# if you use a null path.  Thus, we have to include "." in CDPATH.
+export CDPATH=".:$HOME"
+export TMPDIR="/tmp"
+
+export TOP="-SIs1"
+export BLOCKSIZE=1k
+export NOMHNPROC=true
+export PGPPATH="$HOME/.pgp"
+#export PRINTER=ho9prt194
+#export PRINTER=fh1ps01
+#export PRINTER=unixlp
+#export LPDEST=$PRINTER
+[ -d /cvs ] && export CVSROOT=/cvs
+
+which less > /dev/null 2>&1 && export PAGER=less
+[ -x $HOME/bin/pager ] && export PAGER=$HOME/bin/pager
+
+i=/usr/include
+bi=/bsd43/usr/include
+li=/usr/local/include
+lb=/usr/local/bin
+cl=/cvs/CVSROOT/commitlogs
+
+export zsh=$(which zsh 2>/dev/null)
+
+[ -f $HOME/etc/environments ] && source $HOME/etc/environments
+
+case $TERM in
+    xterm*)
+        [ ! -z "$DISPLAY" ] && xset b off
+        chpwd() {print -Pn "\e]0;%n@%m: %~\a"}
+        chpwd
+        ;;
+esac
+
+export PACKAGEROOT="http://mirror.internode.on.net"
+
+[ -f $HOME/etc/environments ] && source $HOME/etc/environments
+
+echo Finished $ZDOTDIR/.zshrc > /dev/tty

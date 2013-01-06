@@ -1,0 +1,32 @@
+#
+# In search of the ultimate command prompt.
+#
+# Ok, there's other junk in here too.  I'll get rid of it later.
+#
+
+case "`id`" in
+    uid=0\(*)
+	PS1="# "
+	alias sus='suspend'
+	umask 022
+	HOME="$ZDOTDIR"
+	;;
+    *)
+	PS1="%!%(!.#.$) "
+
+	if [ -n "$LEVEL" ]
+	then
+	    [ -z "$WINDOW" ] && PS1="$LEVEL.$PS1"
+	    alias sus='suspend'
+	else
+	    LEVEL=0
+	fi
+	(( LEVEL=LEVEL+1 ))
+	export LEVEL
+
+	alias mpurge='find ~/Mail -name ",*" -exec rm -f {} \;'
+	;;
+esac
+
+#PS1="%S[%m:%.]%s $PS1"
+PS1="[%m:%.] $PS1"

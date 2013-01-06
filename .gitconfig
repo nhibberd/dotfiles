@@ -1,0 +1,10 @@
+[user]
+	name = nhibberd
+	email = nhibberd@gmail.com
+[alias]
+	st = status
+	c = commit
+	a = add .
+	co = checkout
+	p = push origin master 
+	pl = pull origin master

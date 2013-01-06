@@ -1,0 +1,176 @@
+#
+# Zsh aliases
+#
+#
+# 2011-04-08    mth     Pulled out of zshrc.
+#
+
+
+alias s="ls -asF"
+alias a="ls -asl"
+
+
+#
+# Use nvi over regular vi, if it exists.
+#
+# Note: `var=$(which bar) && doit' does nothing useful.
+#
+unalias vi 2>/dev/null
+VI=$(which vi 2>/dev/null)
+which nvi > /dev/null 2>&1 && {
+    VI=$(which nvi 2>/dev/null)
+    alias vi=nvi
+    alias view='nvi -R'
+}
+
+# crontab -e (on Solaris) drops you in 'ed' unless you set EDITOR.
+# Ingres isql buggers your arse unless this is an absolute path.
+# This is such a piss-off since SVR4 vi has a crap exit code and crontab -e
+# checks it!  AARRRGGHH!  At least nvi works.
+
+
+
+#alias -x echo="print -R"		# Good 'ol Berzerkely
+alias k='stty sane intr ^C kill ^U erase ^\?'
+alias h="fc -l"
+alias bell='echo -e "\a"'
+
+alias ns='netstat -f inet'
+
+#
+# General Berkeleyisation, plus favourite ls variants.
+#
+case "$MACHINE_TYPE" in
+    sun*)
+	alias ls='ls -bg'
+	;;
+    solaris)
+	alias man='man -F'
+	alias ls="/usr/ucb/ls -bg"
+	alias chown="/usr/ucb/chown"
+	alias su='echo Remember \$zsh; /bin/su'
+	;;
+    *BSD*)
+	export LANG=en_AU.ISO8859-1
+	unset LC_TIME	# Can't get this to work properly yet.
+	alias ls="ls -q"
+	;;
+    Darwin)
+        unset LC_TIME
+        alias ls="ls -q"
+        ;;
+    linux)
+	alias ls="ls -q"
+	alias ns='netstat -A inet'
+	alias df="df -h"
+	alias du="du -h"
+	;;
+    *)
+	alias ls="ls -Cq"
+	;;
+esac
+
+
+export EDITOR=$VI
+
+alias v=vi
+
+#alias d='date "+%r %a %d %h, 19%y"'
+#alias d='fdate "$@" "%A, %d%h of %L, 19%y.  %R:%02M:%02S %p  %z"'
+#alias d='date "+%A, %e of %B, %Y.  %l:%M:%S %p  %Z%n"'
+
+case "$MACHINE_TYPE" in
+    sun*)
+	alias d='date "+%a, %d of %h, 19%y.  %r"' ;;
+    BSD/386)
+	alias d='date "+%a, %d of %h, %Y.  %r%n"' ;;
+    *)
+	alias d='date "+%a, %d of %h, %Y.  %r"' ;;
+esac
+
+#alias f='who -uT'
+alias f=finger
+alias mps='ps -fu $USER'
+alias cl='cat LOG'
+alias tl='tail -f LOG'
+alias mn='make -n'
+#alias vim='vi Makefile'
+alias onpc='stty rows 49 cols 80'
+#alias z='saver -v -p3 -l40'
+alias z='xlock -remote -mono -usefirst -delay 100000 -mode maze'
+#alias z='xlock -usefirst -erasemode no_fade'
+
+alias df="df -h"
+alias du="du -h"
+alias ll='ls -al'
+alias l='ls'
+alias L='less'
+alias LL='LESS=C netless'
+alias cls="print '`tput clear`\\c'"
+alias ct='ctags -t *.[hc] >/dev/null 2>&1 &'
+#alias com=compress
+#alias uncom=uncompress
+#alias dfs=dfspace
+alias i="echo Don\\'t type i you fool!"
+alias phonemsg='comp -form phonemsg'
+alias msg=phonemsg
+alias out='rlog -R -L RCS/*'
+alias dout='drlog -R -L *|grep ,v$'
+alias xtodo="sh -c 'xvtdl -rv &'"
+alias frame=/usr/remote/frame/bin/imaker
+alias xv='xv -2xlimit'
+alias ns4='netscape.linux.128 -ncols 64'
+alias st='systat -vm 1'
+alias e='echo $?'
+
+alias -g '...'='../..'
+alias -g '....'='../../..'
+alias -g '.....'='../../../..'
+
+# Ridiculous defaults!
+alias scp='scp -q'
+
+# Tar is such a variable thing.  Prefer pdtar, then gnu tar, then regular tar.
+which gtar > /dev/null 2>&1 && alias tar=gtar
+which pdtar > /dev/null 2>&1 && alias tar=pdtar
+
+. "$ZDOTDIR/.zsh/zdirs"
+alias p=pushd
+alias o=popd
+alias q=dirs
+alias Q='dirs -l'
+alias t=swapd
+
+alias j='jobs -l'
+
+alias 1='fg %1'
+alias 2='fg %2'
+alias 3='fg %3'
+alias 4='fg %4'
+alias 5='fg %5'
+alias 6='fg %6'
+alias 7='fg %7'
+alias 8='fg %8'
+alias 9='fg %9'
+alias g=git
+alias gl='git log'
+alias gf='git fetch'
+alias gs='git status'
+alias gb='git branch -a'
+alias gp='git log -p'
+alias gt='git log --graph --pretty=format:"%h -%d %s (%cr)" --abbrev-commit --date=relative'
+alias n='vi $HOME/work/mth/scratch.note'
+alias emnw="emacs -nw"
+alias abcde="abcde -d /dev/cd0"
+if [ -x /bin/zsh ]; then
+    alias zterm="xterm -u8 /bin/zsh"
+elif [ -x /usr/local/bin/zsh ];then
+    alias zterm="xterm -u8 /usr/local/bin/zsh"
+fi
+alias screen="screen -T $TERM"
+
+alias x=task
+alias xx="TASK_FILE=$HOME/.task x"
+
+alias winecfg="LD_32_LIBRARY_PATH=/compat/i386/usr/local/lib PATH=/compat/i386/usr/local/bin:$PATH /compat/i386/usr/local/bin/winecfg"
+alias wine32="LD_32_LIBRARY_PATH=/compat/i386/usr/local/lib PATH=/compat/i386/usr/local/bin:$PATH /compat/i386/usr/local/bin/wine"

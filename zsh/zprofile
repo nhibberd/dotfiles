@@ -1,0 +1,36 @@
+echo Hello from .zprofile
+
+umask 022
+
+export ZDOTDIR=$HOME
+
+# zsh seems to ignore the inherited $PATH if it is a login shell.  Sigh.
+. "$ZDOTDIR/.zsh/zpath"
+
+# Machine type determination.  Needs a good $PATH.
+. "$ZDOTDIR/.zsh/zmachine"
+
+: ${USER:="$LOGNAME"}
+export USER
+
+case $MACHINE_TYPE in
+    solaris|*BSD*)
+	export MAIL=/var/mail/$USER
+	;;
+    *)
+	export MAIL=/usr/spool/mail/$USER
+	;;
+esac
+
+# TTY modes!  Joy!
+. "$ZDOTDIR/.zsh/ztty"
+
+[ ! -d /tmp/$USER ] && mkdir /tmp/$USER
+
+[ -f ~/.note ] && { cat ~/.note; echo; }
+
+[ -x /usr/games/fortune ] && /usr/games/fortune -a && echo ''
+
+mesg y
+
+echo Finished .zprofile

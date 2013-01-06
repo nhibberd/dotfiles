@@ -1,0 +1,36 @@
+#
+# Machine type determination.  Dependent on having "uname" in $PATH somewhere.
+#
+MACHINE_NAME="`uname -n | sed 's/\..*//'`"
+MACHINE_TYPE="`uname -m`"
+
+case "$MACHINE_TYPE" in
+    pyr*|Pyr*|MIS*)
+	MACHINE_TYPE=pyramid
+	;;
+    sun4*)
+	MACHINE_TYPE=sun4
+	if [ `uname -r | sed 's/\..*//'` -ge 5 ]; then
+	    MACHINE_TYPE=solaris
+	fi
+	;;
+    mips*)
+	MACHINE_TYPE=mips
+	;;
+    "DRS 6000")
+	MACHINE_TYPE=DRS6000
+	;;
+    *[3-6]86*|x86*|amd64)
+	MACHINE_TYPE="`uname -s`"
+	case "$MACHINE_TYPE" in
+	    UNIX_System_V)
+		MACHINE_TYPE=DRS3000
+		;;
+	    Linux)
+		MACHINE_TYPE=linux
+		;;
+	esac
+	;;
+esac
+
+export MACHINE_NAME MACHINE_TYPE
