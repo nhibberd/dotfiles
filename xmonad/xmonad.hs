@@ -72,10 +72,21 @@ import XMonad.Util.EZConfig         -- (29) "M-C-x" style keybindings
 import XMonad.Util.Scratchpad       -- (30) 'scratchpad' terminal
 import XMonad.Util.Run              -- (31) for 'spawnPipe', 'hPutStrLn'
 
+-- Multimedia Keys ----
+
+import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioMute,
+                                     xF86XK_AudioRaiseVolume,
+                                     xF86XK_AudioLowerVolume,
+                                     xF86XK_AudioPlay,
+                                     xF86XK_AudioStop,
+                                     xF86XK_AudioNext,
+                                     xF86XK_AudioPrev)
+
+
 
 
 main = do h <- spawnPipe "dzen2 -ta r -fg '#a8a3f7' -bg '#3f3c6d' -e 'onstart=lower'"
-          xmonad $ mthConfig h              
+          xmonad $ nickConfig h              
 
 
 
@@ -86,7 +97,7 @@ main = do h <- spawnPipe "dzen2 -ta r -fg '#a8a3f7' -bg '#3f3c6d' -e 'onstart=lo
 -- "windows key" is usually mod4Mask.
 
  
-mthConfig h = myUrgencyHook $
+nickConfig h = myUrgencyHook $
      defaultConfig 
        {
           borderWidth             = 2
@@ -99,7 +110,7 @@ mthConfig h = myUrgencyHook $
    --    , logHook                  = myLogHook
        ,  mouseBindings           = myMouseBindings
        ,  keys                    = myKeys
-       ,  manageHook              = manageHook defaultConfig <+> myManageHook
+       ,  manageHook              = myManageHook <+> manageHook defaultConfig
        ,  layoutHook              = myLayout
        ,  focusFollowsMouse       = True
        ,  startupHook             = myStartupHook
@@ -108,9 +119,9 @@ mthConfig h = myUrgencyHook $
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
-myWorkspaces = ["1:code", "2:sys", "3:www", "4:email", "5:im"] ++ map show [6..9]
-mthPP :: PP
-mthPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
+myWorkspaces = ["1:code", "2:sys", "3:www", "4:email", "5:im", "6:music"] ++ map show [7..9]
+nickPP :: PP
+nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppHidden  = dzenColor "#999999"  "#262626" . pad
                       , ppCurrent = dzenColor "#262626" "#666666" . pad
                       , ppUrgent  = dzenColor "red"    "yellow"
@@ -118,14 +129,14 @@ mthPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppWsSep   = ""
                       , ppTitle   = shorten 45
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
-                      , ppExtras  = [ loadAvg , date "%a %b %d  %I:%M %p"]
+                      , ppExtras  = [date "%a %b %d  %I:%M %p"]
                       }
   where showNamedWorkspaces wsId = if any (`elem` wsId) ['a'..'z']
                                        then pad wsId
                                        else ""
 
 
-myDynamicLog h = dynamicLogWithPP $ mthPP                   -- (1)
+myDynamicLog h = dynamicLogWithPP $ nickPP                   -- (1)
 --  { ppExtras = [ date "%a %b %d  %I:%M %p"                      -- (1,28)
 --               , loadAvg                                        -- (28)
 --               , battery
@@ -147,7 +158,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
  
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+    , ((modm,               xK_p     ), spawn "dmenu_run")
  
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -223,9 +234,21 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((controlMask, xK_Left), sendMessage $ Go L)
     , ((controlMask, xK_Up), sendMessage $ Go U)
     , ((controlMask, xK_Down), sendMessage $ Go D)
- 
 
- 
+
+     -- Applications
+    , ((modm              , xK_c    ), spawn "chromium")
+    , ((modm .|. shiftMask, xK_m    ), spawn "chromium --app='https://mail.google.com'")
+
+     -- volume control
+    , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 2+")
+    , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 2-")
+    , ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle")
+    , ((0, xF86XK_AudioPlay), spawn "rhythmbox-client --play")
+    , ((0, xF86XK_AudioStop), spawn "rhythmbox-client --pause")
+    , ((0, xF86XK_AudioPrev), spawn "rhythmbox-client --previous")
+    , ((0, xF86XK_AudioNext), spawn "rhythmbox-client --next") 
+
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
  
@@ -314,9 +337,16 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
- 
- 
+    , resource  =? "kdesktop"       --> doIgnore
+    , className =? "sublime-text" --> doShift "1:code"
+    , className =? "jetbrains-idea-ce" --> doShift "1:code" 
+    , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "4:email"
+    , className =? "Chromium" --> doShift "3:www"
+    , className =? "Firefox" --> doShift "3:www" 
+    , className =? "Thunderbird" --> doShift "4:email"
+    , className =? "Pidgin" --> doShift "5:im"
+    , className =? "Rhythmbox" --> doShift "6:music" ]
+  
 ------------------------------------------------------------------------
 -- Status bars and logging
  
@@ -373,6 +403,3 @@ myStartupHook = return ()
 --        logHook            = myLogHook,
 --        startupHook        = myStartupHook
 --    }
-
-
-
