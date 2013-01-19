@@ -52,9 +52,6 @@ import XMonad.Actions.Search       -- (20) some predefined web searches
 import XMonad.Actions.WindowGo     -- (21) runOrRaise
 import XMonad.Actions.UpdatePointer -- (22) auto-warp the pointer to the LR
                                     --      corner of the focused window
---import XMonad.Actions.Volume       -- added for ppExtras volume   
-import XMonad.Actions.Volume                                
- 
 -- Prompts ---------------------------------------------------
  
 import XMonad.Prompt                -- (23) general prompt stuff.
@@ -129,14 +126,14 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppWsSep   = ""
                       , ppTitle   = shorten 45
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
-                      , ppExtras  = [ onLogger ((wrap "^fg(green) Volume: " "^fg()").((take 3)))  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
-                                      , date "%a %b %d  %I:%M %p"]
+                      , ppExtras  = [ onLogger (wrap "volume: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
+                                      , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/devices/platform/coretemp.0/temp2_input | awk '{print $1/1000}'") 
+                                      , date "%a %b %d  %I:%M %p" ]
                       }
   where 
     showNamedWorkspaces wsId = if any (`elem` wsId) ['a'..'z']
                                        then pad wsId
                                        else ""
-
 
 myDynamicLog h = dynamicLogWithPP $ nickPP                   -- (1)
 --  { ppExtras = [ date "%a %b %d  %I:%M %p"                      -- (1,28)
@@ -403,3 +400,6 @@ myStartupHook = return ()
 --        logHook            = myLogHook,
 --        startupHook        = myStartupHook
 --    }
+
+
+
