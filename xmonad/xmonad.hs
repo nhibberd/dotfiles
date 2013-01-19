@@ -238,8 +238,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_m    ), spawn "chromium --app='https://mail.google.com'")
 
      -- volume control
-    , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 2+")
-    , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 2-")
+    , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 5%+")
+    , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 5%-")
     , ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle")
     , ((0, xF86XK_AudioPlay), spawn "rhythmbox-client --play")
     , ((0, xF86XK_AudioStop), spawn "rhythmbox-client --pause")
