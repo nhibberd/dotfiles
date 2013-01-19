@@ -52,6 +52,8 @@ import XMonad.Actions.Search       -- (20) some predefined web searches
 import XMonad.Actions.WindowGo     -- (21) runOrRaise
 import XMonad.Actions.UpdatePointer -- (22) auto-warp the pointer to the LR
                                     --      corner of the focused window
+--import XMonad.Actions.Volume       -- added for ppExtras volume   
+import XMonad.Actions.Volume                                
  
 -- Prompts ---------------------------------------------------
  
@@ -81,8 +83,6 @@ import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioMute,
                                      xF86XK_AudioStop,
                                      xF86XK_AudioNext,
                                      xF86XK_AudioPrev)
-
-
 
 
 main = do h <- spawnPipe "dzen2 -ta r -fg '#a8a3f7' -bg '#3f3c6d' -e 'onstart=lower'"
@@ -129,9 +129,11 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppWsSep   = ""
                       , ppTitle   = shorten 45
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
-                      , ppExtras  = [date "%a %b %d  %I:%M %p"]
+                      , ppExtras  = [ onLogger ((wrap "^fg(green) Volume: " "^fg()").((take 3)))  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
+                                      , date "%a %b %d  %I:%M %p"]
                       }
-  where showNamedWorkspaces wsId = if any (`elem` wsId) ['a'..'z']
+  where 
+    showNamedWorkspaces wsId = if any (`elem` wsId) ['a'..'z']
                                        then pad wsId
                                        else ""
 
@@ -145,7 +147,6 @@ myDynamicLog h = dynamicLogWithPP $ nickPP                   -- (1)
 --  , ppOutput = hPutStrLn h                                      -- (1,31)
 --  , ppTitle  = shorten 45
 --  }
-
 
 
 
@@ -234,7 +235,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((controlMask, xK_Left), sendMessage $ Go L)
     , ((controlMask, xK_Up), sendMessage $ Go U)
     , ((controlMask, xK_Down), sendMessage $ Go D)
-
 
      -- Applications
     , ((modm              , xK_c    ), spawn "chromium")
