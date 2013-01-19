@@ -2,6 +2,7 @@
 --  see: http://haskell.org/haskellwiki/Xmonad/Config_archive/Brent_Yorgey%27s_darcs_xmonad.hs
 -- http://haskell.org/haskellwiki/Xmonad/Config_archive/Brent_Yorgey%27s_xmonad.hs
 import XMonad                          -- (0) core xmonad libraries
+import Control.Monad
 import System.Exit 
 import qualified XMonad.StackSet as W  -- (0a) window stack manipulation
 import qualified Data.Map as M         -- (0b) map creation
@@ -19,7 +20,8 @@ import XMonad.Hooks.ManageHelpers  -- (4)  for doCenterFloat, put floating
 import XMonad.Hooks.SetWMName
  
 -- Layout ----------------------------------------------------
- 
+
+import XMonad.Layout.Accordion  
 import XMonad.Layout.ResizableTile -- (5)  resize non-master windows too
 import XMonad.Layout.Grid          -- (6)  grid layout
 import XMonad.Layout.TwoPane
@@ -52,6 +54,8 @@ import XMonad.Actions.Search       -- (20) some predefined web searches
 import XMonad.Actions.WindowGo     -- (21) runOrRaise
 import XMonad.Actions.UpdatePointer -- (22) auto-warp the pointer to the LR
                                     --      corner of the focused window
+import XMonad.Actions.GridSelect
+
 -- Prompts ---------------------------------------------------
  
 import XMonad.Prompt                -- (23) general prompt stuff.
@@ -62,6 +66,8 @@ import XMonad.Prompt.Input          -- (27) generic input prompt, used for
                                     --      making more generic search
                                     --      prompts than those in
                                     --      XMonad.Prompt.Search
+import XMonad.Prompt.RunOrRaise
+import XMonad.Prompt.Window
  
 -- Utilities -------------------------------------------------
  
@@ -113,14 +119,16 @@ nickConfig h = myUrgencyHook $
        ,  startupHook             = myStartupHook
        }
  
+
+
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
 myWorkspaces = ["1:code", "2:sys", "3:www", "4:email", "5:im", "6:music"] ++ map show [7..9]
 nickPP :: PP
 nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
-                      , ppHidden  = dzenColor "#999999"  "#262626" . pad
-                      , ppCurrent = dzenColor "#262626" "#666666" . pad
+                      , ppHidden  = dzenColor "#ffffff"  "#262626" . pad
+                      , ppCurrent = dzenColor "#ffffff" "#666666" . pad
                       , ppUrgent  = dzenColor "red"    "yellow"
                       , ppSep     = " | "
                       , ppWsSep   = ""
@@ -214,6 +222,23 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Expand the master area
     , ((modm,               xK_l     ), sendMessage Expand)
  
+    -------------------------------
+    
+    -- grid select
+    , ((modm,               xK_g), goToSelected defaultGSConfig) 
+      
+
+    -- grid select
+    , ((modm .|. shiftMask, xK_g), bringSelected defaultGSConfig)       
+
+
+    , ((modm .|. controlMask, xK_g     ), windowPromptGoto
+                                            defaultXPConfig { autoComplete = Just 500000 } )
+
+    , ((modm .|. controlMask .|. shiftMask, xK_g     ), windowPromptBring defaultXPConfig)
+
+    -------------------------------
+
     -- Push window back into tiling
     , ((modm,               xK_t     ), withFocused $ windows . W.sink)
  
