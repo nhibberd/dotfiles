@@ -35,6 +35,13 @@ export LANG=en_AU.UTF-8
 export CDPATH=".:$HOME"
 export TMPDIR="/tmp"
 
+
+###### VENTYX ######
+export http_proxy=http_proxy=http://10.128.140.254:8080/
+export https_proxy=http_proxy=http://10.128.140.254:8080/
+export ftp_proxy=http_proxy=http://10.128.140.254:8080/
+export no_proxy="localhost, 127.0.0.1, localaddress, .localdomain.com, .ventyx.abb.com, .dev.mincom.com"
+
 export TOP="-SIs1"
 export BLOCKSIZE=1k
 export NOMHNPROC=true

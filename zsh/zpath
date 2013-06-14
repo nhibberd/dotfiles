@@ -21,6 +21,8 @@ for DIR in \
 	/usr/remote/bin /usr/remote/sbin /usr/remote/kvm \
 	/usr/contrib/bin \
 	/usr/java/jdk/bin \
+	/opt/java/bin \
+	/opt/java/jre/bin \
 	/bin /usr/bin /sbin /usr/sbin \
 	/usr/ccs/bin /opt/SUNWspro/bin /opt/SUNWmd/sbin \
 	/usr/ucb /bsd43/bin /usr/.ucbucb /usr/.ucbbin \

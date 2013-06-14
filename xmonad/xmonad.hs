@@ -134,7 +134,7 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppWsSep   = ""
                       , ppTitle   = shorten 45
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
-                      , ppExtras  = [ onLogger (wrap "volume: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
+                      , ppExtras  = [ loadAvg
                                       , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/devices/platform/coretemp.0/temp2_input | awk '{print $1/1000}'") 
                                       , date "%a %b %d  %I:%M %p" ]
                       }
@@ -259,7 +259,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((controlMask, xK_Down), sendMessage $ Go D)
 
      -- Applications
-    , ((modm              , xK_c    ), spawn "chromium")
+    , ((modm              , xK_c    ), spawn "chromium --proxy-pac-url=http://10.128.140.254:8080/wpad.dat")
     , ((modm .|. shiftMask, xK_m    ), spawn "chromium --app='https://mail.google.com'")
 
      -- volume control
@@ -360,14 +360,12 @@ myManageHook = composeAll
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
-    , className =? "sublime-text" --> doShift "1:code"
     , className =? "jetbrains-idea-ce" --> doShift "1:code" 
+    , className =? "eclipse" --> doShift "1:code" 
     , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "4:email"
     , className =? "Chromium" --> doShift "3:www"
-    , className =? "Firefox" --> doShift "3:www" 
     , className =? "Thunderbird" --> doShift "4:email"
-    , className =? "Pidgin" --> doShift "5:im"
-    , className =? "Rhythmbox" --> doShift "6:music" ]
+    , className =? "Pidgin" --> doShift "5:im" ]
   
 ------------------------------------------------------------------------
 -- Status bars and logging
