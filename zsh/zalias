@@ -91,6 +91,7 @@ esac
 #alias f='who -uT'
 alias f=finger
 alias mps='ps -fu $USER'
+alias psg='ps aux | grep'
 alias cl='cat LOG'
 alias tl='tail -f LOG'
 alias mn='make -n'

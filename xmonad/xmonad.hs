@@ -124,7 +124,7 @@ nickConfig h = myUrgencyHook $
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
-myWorkspaces = ["1:code", "2:sys", "3:www", "4:email", "5:im", "6:music"] ++ map show [7..9]
+myWorkspaces = ["1:code", "2:sys", "3:chrome", "4:wine", "5:im", "6:docs"] ++ map show [7..9]
 nickPP :: PP
 nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppHidden  = dzenColor "#ffffff"  "#262626" . pad
@@ -251,8 +251,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- toggle the status bar gap (used with avoidStruts from Hooks.ManageDocks)
     -- , ((modm , xK_b ), sendMessage ToggleStruts)
 
-    , ((modm .|. shiftMask, xK_f), runOrRaise "firefox3" (className =? "firefox-bin"))
-
     , ((controlMask, xK_Right), sendMessage $ Go R)
     , ((controlMask, xK_Left), sendMessage $ Go L)
     , ((controlMask, xK_Up), sendMessage $ Go U)
@@ -294,7 +292,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+        | (key, sc) <- zip [xK_e, xK_w, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
  
  
@@ -362,10 +360,14 @@ myManageHook = composeAll
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "jetbrains-idea-ce" --> doShift "1:code" 
     , className =? "eclipse" --> doShift "1:code" 
-    , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "4:email"
-    , className =? "Chromium" --> doShift "3:www"
-    , className =? "Thunderbird" --> doShift "4:email"
-    , className =? "Pidgin" --> doShift "5:im" ]
+    , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "5:im"
+    , (resource  =? "crx_nckgahadagoaajjgafhacjanaoiihapd" <&&> className =? "Chromium") --> doShift "5:im"
+    , className =? "Chromium" --> doShift "3:chrome"
+    , className =? "Firefox" --> doShift "4:wine"
+    , className =? "Pidgin" --> doShift "5:im"
+    , className =? "Wine" --> doShift "4:wine"
+    , className =? "libreoffice-writer" --> doShift "6:docs"
+    , className =? "Thunderbird" --> doShift "5:im" ]
   
 ------------------------------------------------------------------------
 -- Status bars and logging
