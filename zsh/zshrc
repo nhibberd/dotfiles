@@ -32,7 +32,7 @@ export LANG=en_AU.UTF-8
 # But, without "." or null path, /bin/sh cd will fail on local subdirectories.
 # As of version 3, zsh will print the path name of even local subdirectories
 # if you use a null path.  Thus, we have to include "." in CDPATH.
-export CDPATH=".:$HOME"
+# export CDPATH=".:$HOME"
 export TMPDIR="/tmp"
 
 
@@ -41,6 +41,7 @@ export http_proxy=http_proxy=http://10.128.140.254:8080/
 export https_proxy=http_proxy=http://10.128.140.254:8080/
 export ftp_proxy=http_proxy=http://10.128.140.254:8080/
 export no_proxy="localhost, 127.0.0.1, localaddress, .localdomain.com, .ventyx.abb.com, .dev.mincom.com"
+export ICAROOT="/opt/apps/ICAClient/linuxx86"
 
 export TOP="-SIs1"
 export BLOCKSIZE=1k
