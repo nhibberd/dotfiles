@@ -359,11 +359,12 @@ myManageHook = composeAll
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "jetbrains-idea-ce" --> doShift "1:code" 
-    , className =? "eclipse" --> doShift "1:code" 
+    , className =? "Eclipse" --> doShift "1:code" 
     , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "5:im"
     , (resource  =? "crx_nckgahadagoaajjgafhacjanaoiihapd" <&&> className =? "Chromium") --> doShift "5:im"
     , className =? "Chromium" --> doShift "3:chrome"
-    , className =? "Firefox" --> doShift "4:wine"
+    , className =? "Firefox" --> doShift "4:wine" <+> doFloat
+    , className =? "Flashplayerdebugger" --> doShift "4:wine"
     , className =? "Pidgin" --> doShift "5:im"
     , className =? "Wine" --> doShift "4:wine"
     , className =? "libreoffice-writer" --> doShift "6:docs"

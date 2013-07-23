@@ -98,7 +98,8 @@ alias mn='make -n'
 #alias vim='vi Makefile'
 alias onpc='stty rows 49 cols 80'
 #alias z='saver -v -p3 -l40'
-alias z='xlock -remote -mono -usefirst -delay 100000 -mode maze'
+#alias z='xlock -remote -mono -usefirst -delay 100000 -mode maze'
+alias z='xscreensaver-command -lock'
 #alias z='xlock -usefirst -erasemode no_fade'
 
 alias df="df -h"
@@ -112,7 +113,6 @@ alias ct='ctags -t *.[hc] >/dev/null 2>&1 &'
 #alias com=compress
 #alias uncom=uncompress
 #alias dfs=dfspace
-alias i="echo Don\\'t type i you fool!"
 alias phonemsg='comp -form phonemsg'
 alias msg=phonemsg
 alias out='rlog -R -L RCS/*'
@@ -141,6 +141,7 @@ alias o=popd
 alias q=dirs
 alias Q='dirs -l'
 alias t=swapd
+alias i=delete
 
 alias j='jobs -l'
 
