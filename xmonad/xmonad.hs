@@ -39,8 +39,9 @@ import XMonad.Layout.MultiToggle.Instances
                                    --      window
 import qualified XMonad.Layout.Magnifier as Mag
  
-import XMonad.Layout.Gaps
- 
+import XMonad.Layout.Gaps 
+import XMonad.Layout.NoBorders   ( smartBorders )
+
 -- Actions ---------------------------------------------------
  
 import XMonad.Actions.CycleWS      -- (16) general workspace-switching
@@ -326,10 +327,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts(tiled ||| Mirror tiled ||| Full) ||| Full
+myLayout = avoidStruts(tiled ||| Mirror tiled ||| smartBorders Full) ||| smartBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+     tiled   = smartBorders $ Tall nmaster delta ratio
  
      -- The default number of windows in the master pane
      nmaster = 1
