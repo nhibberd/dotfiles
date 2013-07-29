@@ -123,6 +123,8 @@ alias xv='xv -2xlimit'
 alias ns4='netscape.linux.128 -ncols 64'
 alias st='systat -vm 1'
 alias e='echo $?'
+alias pacman='sudo pacman'
+alias mute='amixer -q set Master toggle'
 
 alias -g '...'='../..'
 alias -g '....'='../../..'

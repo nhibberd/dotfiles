@@ -40,6 +40,7 @@ import XMonad.Layout.MultiToggle.Instances
 import qualified XMonad.Layout.Magnifier as Mag
  
 import XMonad.Layout.Gaps
+import XMonad.Layout.NoBorders
  
 -- Actions ---------------------------------------------------
  
@@ -124,7 +125,7 @@ nickConfig h = myUrgencyHook $
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
-myWorkspaces = ["1:code", "2:sys", "3:chrome", "4:wine", "5:im", "6:docs"] ++ map show [7..9]
+myWorkspaces = ["1:code", "2:sys", "3:chrome", "4:debug", "5:im", "6:docs"] ++ map show [7..9]
 nickPP :: PP
 nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppHidden  = dzenColor "#ffffff"  "#262626" . pad
@@ -136,6 +137,7 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
                       , ppExtras  = [ loadAvg
                                       , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/devices/platform/coretemp.0/temp2_input | awk '{print $1/1000}'") 
+                                      , battery
                                       , date "%a %b %d  %I:%M %p" ]
                       }
   where 
@@ -208,8 +210,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
 
-    , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
- 
     -- Swap the focused window with the next window
     , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
  
@@ -270,7 +270,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_AudioNext), spawn "rhythmbox-client --next") 
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    -- , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
  
     -- Restart xmonad
     , ((modm              , xK_q     ), restart "xmonad" True)
@@ -292,7 +292,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_e, xK_w, xK_r] [0..]
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
  
  
@@ -324,7 +324,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts(tiled ||| Mirror tiled ||| Full) ||| Full
+myLayout = lessBorders Screen $ avoidStruts(tiled ||| Mirror tiled ||| Full) ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -363,10 +363,9 @@ myManageHook = composeAll
     , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "5:im"
     , (resource  =? "crx_nckgahadagoaajjgafhacjanaoiihapd" <&&> className =? "Chromium") --> doShift "5:im"
     , className =? "Chromium" --> doShift "3:chrome"
-    , className =? "Firefox" --> doShift "4:wine" <+> doFloat
-    , className =? "Flashplayerdebugger" --> doShift "4:wine"
+    , className =? "Firefox" --> doShift "4:debug" <+> doFloat
     , className =? "Pidgin" --> doShift "5:im"
-    , className =? "Wine" --> doShift "4:wine"
+    , className =? "Wine" --> doShift "4:debug"
     , className =? "libreoffice-writer" --> doShift "6:docs"
     , className =? "Thunderbird" --> doShift "5:im" ]
   
