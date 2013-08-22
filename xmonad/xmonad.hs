@@ -363,7 +363,6 @@ myManageHook = composeAll
     , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "5:im"
     , (resource  =? "crx_nckgahadagoaajjgafhacjanaoiihapd" <&&> className =? "Chromium") --> doShift "5:im"
     , className =? "Chromium" --> doShift "3:chrome"
-    , className =? "Firefox" --> doShift "4:debug" <+> doFloat
     , className =? "Pidgin" --> doShift "5:im"
     , className =? "Wine" --> doShift "4:debug"
     , className =? "libreoffice-writer" --> doShift "6:docs"

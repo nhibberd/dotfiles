@@ -47,3 +47,4 @@ unset DIR
 ### ventyx
 export JAVA_HOME=/opt/java
 export FLEX_HOME=/opt/sdks/flex_sdk_4.5.1.21328
+export PYTHONPATH=/usr/lib/python2.6/lib-dynload/
