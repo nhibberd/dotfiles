@@ -125,7 +125,7 @@ nickConfig h = myUrgencyHook $
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
-myWorkspaces = ["1:code", "2:sys", "3:chrome", "4:debug", "5:im", "6:docs"] ++ map show [7..9]
+myWorkspaces = ["1:code", "2:sys", "3:www", "4:debug", "5:subl", "6:music", "7:proxy"] ++ map show [8..9]
 nickPP :: PP
 nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppHidden  = dzenColor "#ffffff"  "#262626" . pad
@@ -137,7 +137,6 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
                       , ppExtras  = [ loadAvg
                                       , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/devices/platform/coretemp.0/temp2_input | awk '{print $1/1000}'") 
-                                      , battery
                                       , date "%a %b %d  %I:%M %p" ]
                       }
   where 
@@ -360,13 +359,12 @@ myManageHook = composeAll
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "jetbrains-idea-ce" --> doShift "1:code" 
     , className =? "Eclipse" --> doShift "1:code" 
-    , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "5:im"
-    , (resource  =? "crx_nckgahadagoaajjgafhacjanaoiihapd" <&&> className =? "Chromium") --> doShift "5:im"
-    , className =? "Chromium" --> doShift "3:chrome"
-    , className =? "Pidgin" --> doShift "5:im"
+    , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "5:subl"
+    , className =? "Chromium" --> doShift "3:www"
+    , className =? "Pidgin" --> doShift "5:subl"
     , className =? "Wine" --> doShift "4:debug"
-    , className =? "libreoffice-writer" --> doShift "6:docs"
-    , className =? "Thunderbird" --> doShift "5:im" ]
+    , className =? "libreoffice-writer" --> doShift "6:music"
+    , className =? "com-xk72-charles-gui-MainWithClassLoader" --> doShift "7:proxy" ]
   
 ------------------------------------------------------------------------
 -- Status bars and logging

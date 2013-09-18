@@ -36,4 +36,5 @@ xterm*scrollBar: false
 *color15: #eeeeec
 
 Emacs.FontBackend: xft
+dzen2.FontBackend: xft
 dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
