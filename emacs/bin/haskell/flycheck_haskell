@@ -1,0 +1,3 @@
+#!/bin/sh
+
+`dirname $0`/flycheck_haskell_cabal.pl "$@"

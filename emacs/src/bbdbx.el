@@ -1,0 +1,2 @@
+(require 'bbdb)
+(bbdb-initialize)

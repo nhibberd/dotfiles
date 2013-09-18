@@ -1,0 +1,5 @@
+;; .emacs
+
+(load-file "~/dotfiles/emacs/src/entry.el")
+
+
