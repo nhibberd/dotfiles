@@ -361,6 +361,7 @@ myManageHook = composeAll
     , className =? "Eclipse" --> doShift "1:code" 
     , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "5:subl"
     , className =? "Chromium" --> doShift "3:www"
+    , className =? "Firefox" --> doShift "4:debug"
     , className =? "Pidgin" --> doShift "5:subl"
     , className =? "Wine" --> doShift "4:debug"
     , className =? "libreoffice-writer" --> doShift "6:music"
