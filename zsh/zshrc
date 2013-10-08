@@ -37,9 +37,11 @@ export TMPDIR="/tmp"
 
 
 ###### VENTYX ######
-export http_proxy=http_proxy=http://10.128.140.254:8080/
-export https_proxy=http_proxy=http://10.128.140.254:8080/
-export ftp_proxy=http_proxy=http://10.128.140.254:8080/
+export http_proxy="http://10.128.140.254:8080/"
+export https_proxy="http://10.128.140.254:8080/"
+export HTTP_PROXY="http://10.128.140.254:8080/"
+export HTTPS_PROXY="http://10.128.140.254:8080/"
+export ftp_proxy=http://10.128.140.254:8080/
 export no_proxy="localhost, 127.0.0.1, localaddress, .localdomain.com, .ventyx.abb.com, .dev.mincom.com"
 export ICAROOT="/opt/apps/ICAClient/linuxx86"
 
