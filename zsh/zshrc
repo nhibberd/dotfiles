@@ -45,6 +45,15 @@ export ftp_proxy=http://10.128.140.254:8080/
 export no_proxy="localhost, 127.0.0.1, localaddress, .localdomain.com, .ventyx.abb.com, .dev.mincom.com"
 export ICAROOT="/opt/apps/ICAClient/linuxx86"
 
+###### ORACLE 11g EE ######
+export ORACLE_BASE=/opt/oracle
+export ORACLE_HOME=/opt/oracle/product/db
+export ORACLE_SID=xdb
+export ORACLE_INVENTORY=/opt/oracle/inventory
+export ORACLE_BASE ORACLE_SID ORACLE_HOME
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+export VISUAL=nano
+
 export TOP="-SIs1"
 export BLOCKSIZE=1k
 export NOMHNPROC=true
