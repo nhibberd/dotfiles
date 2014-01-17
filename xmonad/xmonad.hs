@@ -359,6 +359,7 @@ myManageHook = composeAll
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "jetbrains-idea-ce" --> doShift "1:code" 
     , className =? "Eclipse" --> doShift "1:code" 
+    , className =? "jetbrains-idea" --> doShift "1:code" 
     , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "5:subl"
     , className =? "Chromium" --> doShift "3:www"
     , className =? "Firefox" --> doShift "4:debug"
