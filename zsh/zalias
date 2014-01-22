@@ -91,13 +91,15 @@ esac
 #alias f='who -uT'
 alias f=finger
 alias mps='ps -fu $USER'
+alias psg='ps aux | grep'
 alias cl='cat LOG'
 alias tl='tail -f LOG'
 alias mn='make -n'
 #alias vim='vi Makefile'
 alias onpc='stty rows 49 cols 80'
 #alias z='saver -v -p3 -l40'
-alias z='xlock -remote -mono -usefirst -delay 100000 -mode maze'
+#alias z='xlock -remote -mono -usefirst -delay 100000 -mode maze'
+alias z='xscreensaver-command -lock'
 #alias z='xlock -usefirst -erasemode no_fade'
 
 alias df="df -h"
@@ -111,7 +113,6 @@ alias ct='ctags -t *.[hc] >/dev/null 2>&1 &'
 #alias com=compress
 #alias uncom=uncompress
 #alias dfs=dfspace
-alias i="echo Don\\'t type i you fool!"
 alias phonemsg='comp -form phonemsg'
 alias msg=phonemsg
 alias out='rlog -R -L RCS/*'
@@ -122,6 +123,9 @@ alias xv='xv -2xlimit'
 alias ns4='netscape.linux.128 -ncols 64'
 alias st='systat -vm 1'
 alias e='echo $?'
+alias pacman='sudo pacman'
+alias grep='grep --color=auto'
+alias mute='amixer -q set Master toggle'
 
 alias -g '...'='../..'
 alias -g '....'='../../..'
@@ -140,6 +144,7 @@ alias o=popd
 alias q=dirs
 alias Q='dirs -l'
 alias t=swapd
+alias i=delete
 
 alias j='jobs -l'
 
@@ -152,14 +157,18 @@ alias 6='fg %6'
 alias 7='fg %7'
 alias 8='fg %8'
 alias 9='fg %9'
+alias iname='find . -iname'
+alias r='git pull --rebase'
 alias g=git
+alias gg='git grep'
+alias gc='git checkout'
 alias gl='git log'
-alias gf='git fetch'
+alias gf='git fetch --prune'
 alias gs='git status'
 alias gb='git branch -a'
 alias gp='git log -p'
 alias gt='git log --graph --pretty=format:"%h -%d %s (%cr)" --abbrev-commit --date=relative'
-alias n='vi $HOME/work/mth/scratch.note'
+alias n='vi $HOME/work/scratch.note'
 alias emnw="emacs -nw"
 alias abcde="abcde -d /dev/cd0"
 if [ -x /bin/zsh ]; then

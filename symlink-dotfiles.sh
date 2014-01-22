@@ -15,6 +15,7 @@ ln -s dotfiles/xmonad .xmonad
 ln -s dotfiles/x/Xdefaults .Xdefaults
 ln -s dotfiles/x/Xmodmap .Xmodmap
 ln -s dotfiles/x/xsession .xsession
+ln -s dotfiles/x/xinitrc .xinitrc
 
 # ssh
 [ ! -d $HOME/.ssh ] && mkdir $HOME/.ssh

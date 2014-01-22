@@ -39,9 +39,9 @@ import XMonad.Layout.MultiToggle.Instances
                                    --      window
 import qualified XMonad.Layout.Magnifier as Mag
  
-import XMonad.Layout.Gaps 
-import XMonad.Layout.NoBorders   ( smartBorders )
-
+import XMonad.Layout.Gaps
+import XMonad.Layout.NoBorders
+ 
 -- Actions ---------------------------------------------------
  
 import XMonad.Actions.CycleWS      -- (16) general workspace-switching
@@ -125,7 +125,7 @@ nickConfig h = myUrgencyHook $
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
-myWorkspaces = ["1:code", "2:sys", "3:www", "4:email", "5:im", "6:music"] ++ map show [7..9]
+myWorkspaces = ["1:code", "2:sys", "3:www", "4:debug", "5:subl", "6:music", "7:proxy"] ++ map show [8..9]
 nickPP :: PP
 nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppHidden  = dzenColor "#ffffff"  "#262626" . pad
@@ -135,7 +135,8 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppWsSep   = ""
                       , ppTitle   = shorten 45
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
-                      , ppExtras  = [ onLogger (wrap "volume: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
+                      , ppExtras  = [ loadAvg
+									  , onLogger (wrap "volume: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
                                       , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/devices/platform/coretemp.0/temp2_input | awk '{print $1/1000}'") 
                                       , date "%a %b %d  %I:%M %p" ]
                       }
@@ -209,8 +210,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
 
-    , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
- 
     -- Swap the focused window with the next window
     , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
  
@@ -252,8 +251,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- toggle the status bar gap (used with avoidStruts from Hooks.ManageDocks)
     -- , ((modm , xK_b ), sendMessage ToggleStruts)
 
-    , ((modm .|. shiftMask, xK_f), runOrRaise "firefox3" (className =? "firefox-bin"))
-
     , ((controlMask, xK_Right), sendMessage $ Go R)
     , ((controlMask, xK_Left), sendMessage $ Go L)
     , ((controlMask, xK_Up), sendMessage $ Go U)
@@ -273,7 +270,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_AudioNext), spawn "rhythmbox-client --next") 
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    -- , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
  
     -- Restart xmonad
     , ((modm              , xK_q     ), restart "xmonad" True)
@@ -327,10 +324,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts(tiled ||| Mirror tiled ||| smartBorders Full) ||| smartBorders Full
+myLayout = lessBorders Screen $ avoidStruts(tiled ||| Mirror tiled ||| Full) ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = smartBorders $ Tall nmaster delta ratio
+     tiled   = Tall nmaster delta ratio
  
      -- The default number of windows in the master pane
      nmaster = 1
@@ -362,13 +359,13 @@ myManageHook = composeAll
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "sublime-text" --> doShift "1:code"
+    , className =? "jetbrains-idea" --> doShift "1:code" 
     , className =? "jetbrains-idea-ce" --> doShift "1:code" 
-    , (resource  =? "mail.google.com" <&&> className =? "Chromium") --> doShift "4:email"
+    , className =? "Eclipse" --> doShift "1:code" 
     , className =? "Chromium" --> doShift "3:www"
-    , className =? "Firefox" --> doShift "3:www" 
-    , className =? "Thunderbird" --> doShift "4:email"
-    , className =? "Pidgin" --> doShift "5:im"
-    , className =? "Rhythmbox" --> doShift "6:music" ]
+    , className =? "Firefox" --> doShift "4:debug"
+    , className =? "Pidgin" --> doShift "5:subl"
+    , className =? "Wine" --> doShift "4:debug"
   
 ------------------------------------------------------------------------
 -- Status bars and logging

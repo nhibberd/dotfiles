@@ -1,11 +1,11 @@
 #!/bin/zsh -l
 
 #causes no end of grief
-#xscreensaver -no-splash &
+xscreensaver -no-splash &
 
 xrdb -merge .Xdefaults
 
 xmodmap $HOME/.Xmodmap
 
-exec ssh-agent xmonad | dzen2  -ta r -fg '#999999' -bg '#262626'
+exec ssh-agent xmonad | dzen2  -ta r -fg '#999999' -bg '#262626' -e 'button2=menuprint;button3=menuprint;button1=menuprint'
 

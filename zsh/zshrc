@@ -32,8 +32,10 @@ export LANG=en_AU.UTF-8
 # But, without "." or null path, /bin/sh cd will fail on local subdirectories.
 # As of version 3, zsh will print the path name of even local subdirectories
 # if you use a null path.  Thus, we have to include "." in CDPATH.
-export CDPATH=".:$HOME"
+# export CDPATH=".:$HOME"
 export TMPDIR="/tmp"
+
+export WORDCHARS='*?_-.{}~=&;!#$%^(){}<>'
 
 export TOP="-SIs1"
 export BLOCKSIZE=1k

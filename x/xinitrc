@@ -1,4 +1,5 @@
 #!/bin/sh
 xsetroot -cursor_name left_ptr
-
+setxkbmap -layout "us, se" -option "grp:caps_toggle"
+xbindkeys
 $HOME/.xsession

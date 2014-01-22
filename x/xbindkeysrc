@@ -1,0 +1,2 @@
+"xvkbd -no-jump-pointer -text "\D1`xsel`" 2>/dev/null"
+    F12
