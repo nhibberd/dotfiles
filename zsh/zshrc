@@ -35,6 +35,7 @@ export LANG=en_AU.UTF-8
 # export CDPATH=".:$HOME"
 export TMPDIR="/tmp"
 
+export WORDCHARS='*?_-.{}~=&;!#$%^(){}<>'
 
 ###### VENTYX ######
 export http_proxy="http://10.128.140.254:8080/"
@@ -44,6 +45,9 @@ export HTTPS_PROXY="http://10.128.140.254:8080/"
 export ftp_proxy=http://10.128.140.254:8080/
 export no_proxy="localhost, 127.0.0.1, localaddress, .localdomain.com, .ventyx.abb.com, .dev.mincom.com"
 export ICAROOT="/opt/apps/ICAClient/linuxx86"
+export JAVA_HOME=/opt/java
+export FLEX_HOME=/opt/sdks/flex_sdk_4.5.1.21328
+export PYTHONPATH=/usr/lib/python2.6/lib-dynload/
 
 ###### ORACLE 11g EE ######
 export ORACLE_BASE=/opt/oracle
