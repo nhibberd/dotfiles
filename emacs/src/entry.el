@@ -18,4 +18,4 @@
 (load-library "haskellx")
 (load-library "groovyx")
 (load-library "bbdbx")
-(load-library "orgmodex")
+;;(load-library "orgmodex")
