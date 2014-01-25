@@ -65,10 +65,10 @@
 (set-face-foreground 'font-lock-negation-char-face "#16CC55")
 
 (set-face-foreground 'font-lock-warning-face "#16CC55")
-(set-face-background 'modeline-inactive "#363636")
-(set-face-foreground 'modeline-inactive "grey75")
-(set-face-background 'modeline "grey30")
-(set-face-foreground 'modeline "grey80")
+(set-face-background 'mode-line-inactive "#363636")
+(set-face-foreground 'mode-line-inactive "grey75")
+(set-face-background 'mode-line "grey30")
+(set-face-foreground 'mode-line "grey80")
 
 
 
