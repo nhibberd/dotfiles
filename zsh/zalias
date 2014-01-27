@@ -161,6 +161,7 @@ alias iname='find . -iname'
 alias r='git pull --rebase'
 alias g=git
 alias gg='git grep'
+alias gd='git diff'
 alias gc='git checkout'
 alias gl='git log'
 alias gf='git fetch --prune'
