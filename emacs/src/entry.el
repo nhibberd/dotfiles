@@ -22,3 +22,5 @@
 (load-library "s")
 (load-library "projectile")
 ;;(load-library "orgmodex")
+
+(projectile-global-mode)
