@@ -1,0 +1,29 @@
+escape ^\\\
+
+
+vbell off
+
+
+attrcolor b ".I"
+#termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm-color|xterm|xterms|xs|rxvt ti@:te@
+
+defbce "on"
+#emacs delete key
+bindkey -k kb
+bindkey -d -k kb
+bindkey -k kD
+bindkey -d -k kD
+
+# An alternative hardstatus to display a bar at the bottom listing the
+# windownames and highlighting the current windowname in blue. (This is only
+# enabled if there is no hardstatus setting for your terminal)
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+bind f eval "hardstatus ignore"
+bind F eval "hardstatus alwayslastline"
+#bind f eval "caption splitonly" "hardstatus ignore"
+#bind F eval "caption always"    "hardstatus alwayslastline"
+
+defscrollback 5000

@@ -21,7 +21,7 @@ ln -s dotfiles/x/xinitrc .xinitrc
 ln -s dotfiles/emacs/bootstrap/emacs .emacs  
 
 # screen
-#ln -s dotfiles/screen/screenrc .screenrc
+ln -s dotfiles/screen/screenrc .screenrc
 
 # ssh
 [ ! -d $HOME/.ssh ] && mkdir $HOME/.ssh
