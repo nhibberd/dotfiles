@@ -18,4 +18,7 @@
 (load-library "haskellx")
 (load-library "groovyx")
 (load-library "bbdbx")
+(load-library "dash")
+(load-library "s")
+(load-library "projectile")
 ;;(load-library "orgmodex")

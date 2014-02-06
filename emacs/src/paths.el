@@ -17,6 +17,8 @@
 (add-path "lib/js-comint")
 (add-path "lib/bbdb")
 (add-path "lib/norang-org")
+(add-path "lib/dash.el")
+(add-path "lib/projectile")
 (add-path "src")
 )
 
