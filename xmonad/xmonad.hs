@@ -365,7 +365,8 @@ myManageHook = composeAll
     , className =? "Chromium" --> doShift "3:www"
     , className =? "Firefox" --> doShift "4:debug"
     , className =? "Pidgin" --> doShift "5:subl"
-    , className =? "Wine" --> doShift "4:debug" ]
+    , className =? "Wine" --> doShift "4:debug"
+    , className =? "Vuze" --> doShift "9" ]
   
 ------------------------------------------------------------------------
 -- Status bars and logging
