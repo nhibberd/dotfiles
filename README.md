@@ -4,6 +4,8 @@ dotfiles
 - zsh
 - x
 - xmonad
+- screen
+- emacs
 - install-scripts
 
 ```
