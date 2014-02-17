@@ -1,0 +1,6 @@
+#!/bin/bash -eu
+
+razercfg -r 1:2
+razercfg -d mouse -l Scrollwheel:off
+razercfg -d mouse -l GlowingLogo:off
+razercfg -d mouse -f 1:500

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+FILE=$1
+rsync -h -v --progress $FILE -e ssh "nick@mac:nu/"

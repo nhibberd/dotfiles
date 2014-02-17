@@ -1,0 +1,2 @@
+#!/bin/sh -eu
+openconnect -v --script ./vpnc-script vpnbne.mincom.com
