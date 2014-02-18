@@ -1,4 +1,6 @@
 #!/bin/sh
 
-FILE=$1
-rsync -h -v --progress $FILE -e ssh "nick@mac:nu/"
+for FILE in "$@"
+do
+  rsync -h -v --progress $FILE -e ssh "nick@mac:nu/"
+done
