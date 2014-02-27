@@ -1,6 +1,6 @@
-#!/bin/base -eu
+#!/bin/bash -eu
 DATE=`date +%H:%M-%d-%m-%Y`
-logfile = "$HOME/log/cpmac-$DATE.log"
+logfile="$HOME/log/cpmac-$DATE.log"
 exec &>> >(tee $logfile);
 
 for FILE in "$@"
