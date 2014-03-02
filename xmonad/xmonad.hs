@@ -354,11 +354,11 @@ myLayout = lessBorders Screen $ avoidStruts(tiled ||| Mirror tiled ||| Full) |||
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
+    [ isFullscreen --> doFullFloat
+    , className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
-    , className =? "sublime-text" --> doShift "1:code"
     , className =? "jetbrains-idea" --> doShift "1:code" 
     , className =? "jetbrains-idea-ce" --> doShift "1:code" 
     , className =? "Eclipse" --> doShift "1:code" 
