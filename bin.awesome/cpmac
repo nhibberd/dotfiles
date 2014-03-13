@@ -1,5 +1,5 @@
 #!/bin/bash -eu
-DATE=`date +%H:%M-%d-%m-%Y`
+DATE=`date +%d-%m-%Y`
 logfile="$HOME/log/cpmac-$DATE.log"
 exec &>> >(tee $logfile);
 
