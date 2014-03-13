@@ -1,9 +1,9 @@
 #!/bin/bash -eu
 DATE=`date +%d-%m-%Y`
 logfile="$HOME/log/cpmac-$DATE.log"
-exec &>> >(tee $logfile);
 
 for FILE in "$@"
 do
+  echo $FILE >> $logfile
   rsync -h -v --progress $FILE -e ssh "nick@mac:nu/"
 done
