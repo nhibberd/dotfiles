@@ -88,6 +88,8 @@ import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioMute,
                                      xF86XK_AudioNext,
                                      xF86XK_AudioPrev)
 
+import XMonad.Hooks.EwmhDesktops
+
 
 main = do h <- spawnPipe "dzen2 -ta r -fg '#a8a3f7' -bg '#3f3c6d' -e 'onstart=lower'"
           xmonad $ nickConfig h
@@ -118,6 +120,7 @@ nickConfig h = myUrgencyHook $
        ,  layoutHook              = myLayout
        ,  focusFollowsMouse       = True
        ,  startupHook             = myStartupHook
+       ,  handleEventHook         = fullscreenEventHook
        }
 
 
