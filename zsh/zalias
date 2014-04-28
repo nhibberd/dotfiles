@@ -170,6 +170,7 @@ alias gb='git branch -a'
 alias gp='git log -p'
 alias gt='git log --graph --pretty=format:"%h -%d %s (%cr)" --abbrev-commit --date=relative'
 alias n='vi $HOME/work/scratch.note'
+alias emacs="Emacs"
 alias emnw="emacs -nw"
 alias abcde="abcde -d /dev/cd0"
 if [ -x /bin/zsh ]; then
