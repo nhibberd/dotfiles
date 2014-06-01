@@ -5,7 +5,7 @@ xscreensaver -no-splash &
 
 xrdb -merge .Xdefaults
 
-/home/nick/stuff/scripts/razer &
+razer &
 
 xmodmap $HOME/.Xmodmap
 
