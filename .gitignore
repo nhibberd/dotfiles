@@ -7,3 +7,5 @@ xmonad/xmonad.o
 irssi/away.log
 *~
 irssi/saved_colors
+zworkexport
+.DS_Store
