@@ -27,6 +27,7 @@ export LANG=en_AU.UTF-8
 . "$ZDOTDIR/.zsh/zalias"
 . "$ZDOTDIR/.zsh/zcompletion"
 . "$ZDOTDIR/.zsh/zkeybinding"  #destroyed modkey
+[ -f $ZDOTDIR/.zsh/zprivate ] && . "$ZDOTDIR/.zsh/zprivate"
 
 # Zsh will allow "cd localsubdir" even if CDPATH doesn't have "." or "" in it.
 # But, without "." or null path, /bin/sh cd will fail on local subdirectories.
