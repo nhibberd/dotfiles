@@ -44,15 +44,14 @@
  (set-face-foreground 'vertical-border "grey30")
  )
 
+(set-face-foreground 'font-lock-comment-face "grey60")
+(set-face-foreground 'font-lock-comment-delimiter-face "grey60")
 
-;; use M-x list-faces-display. to see what can be set
-
-(set-face-foreground 'font-lock-comment-face "#A52A2A")
-(set-face-foreground 'font-lock-comment-delimiter-face "#A52A2A")
-(set-face-foreground 'font-lock-doc-face "#A52A2A")
+(set-face-foreground 'font-lock-doc-face "grey52")
 (set-face-foreground 'font-lock-keyword-face "#86ABD9")
+;;(set-face-foreground 'font-lock-keyword-face "#16CC55")
 (set-face-foreground 'font-lock-string-face "#F5F5F5")
-(set-face-foreground 'font-lock-constant-face  "#16CC55")
+(set-face-foreground 'font-lock-constant-face "#16CC55")
 (set-face-foreground 'font-lock-type-face "#16CC55")
 (set-face-foreground 'minibuffer-prompt "#86ABD9")
 (set-face-foreground 'ido-subdir "#16CC55")
@@ -83,7 +82,7 @@
 (set-face-bold-p 'font-lock-comment-delimiter-face t)
 (set-face-bold-p 'font-lock-keyword-face t)
 (set-face-bold-p 'font-lock-string-face nil)
-(set-face-bold-p 'font-lock-constant-face  nil)
+
 (set-face-bold-p 'font-lock-type-face t)
 (set-face-bold-p 'font-lock-function-name-face nil)
 (set-face-bold-p 'font-lock-variable-name-face nil)
