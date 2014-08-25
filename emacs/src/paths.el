@@ -6,7 +6,7 @@
 
 (add-path "lib")
 (add-path "lib/python")
-(add-path "lib/scala")
+(add-path "lib/scala-mode2")
 (add-path "lib/yas")
 (add-path "lib/killring")
 (add-path "lib/git")

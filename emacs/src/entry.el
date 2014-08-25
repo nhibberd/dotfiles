@@ -5,7 +5,7 @@
 (load-file (concat (getenv "EDOTDIR") "/src/paths.el"))
 (load-library "eperiodic")
 (load-library "requirex")
-(load-library "scala-mode-auto")
+(load-library "scala-mode2")
 (load-library "viewx")
 (load-library "keys")
 (load-library "hippies")
@@ -24,3 +24,4 @@
 ;;(load-library "orgmodex")
 
 (projectile-global-mode)
+
