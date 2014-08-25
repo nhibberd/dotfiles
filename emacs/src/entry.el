@@ -10,7 +10,7 @@
 (load-library "keys")
 (load-library "hippies")
 (load-library "ruby")
-(load-library "gitx")
+;;(load-library "gitx")
 (load-library "pythonx")
 (load-library "toggletest")
 (load-library "scalax")
@@ -24,4 +24,3 @@
 ;;(load-library "orgmodex")
 
 (projectile-global-mode)
-

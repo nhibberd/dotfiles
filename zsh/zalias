@@ -185,3 +185,4 @@ alias xx="TASK_FILE=$HOME/.task x"
 
 alias winecfg="LD_32_LIBRARY_PATH=/compat/i386/usr/local/lib PATH=/compat/i386/usr/local/bin:$PATH /compat/i386/usr/local/bin/winecfg"
 alias wine32="LD_32_LIBRARY_PATH=/compat/i386/usr/local/lib PATH=/compat/i386/usr/local/bin:$PATH /compat/i386/usr/local/bin/wine"
+alias files="git status -sb | tail -n +2 | awk '{print \$2}' | xargs"

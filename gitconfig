@@ -1,0 +1,12 @@
+[user]
+	email = nhibberd@gmail.com
+	name = Nick Hibberd
+[core]
+	editor = Emacs -nw
+	excludesfile = ~/.gitignore
+[push]
+	default = simple
+[alias]
+	ignore = update-index --assume-unchanged
+	showignored = ! git ls-files -v | grep ^h
+	unignore = update-index --no-assume-unchanged
