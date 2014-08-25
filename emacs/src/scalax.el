@@ -24,7 +24,7 @@
 
 (update-fixtag-scala "CHESS")
 
-(add-to-list 'load-path (concat (getenv "EDOTDIR") "/lib/ensime/elisp"))
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-(add-hook 'java-mode-hook 'ensime-scala-mode-hook)
+;;(add-to-list 'load-path (concat (getenv "EDOTDIR") "/lib/ensime/elisp"))
+;;(require 'ensime)
+;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+;;(add-hook 'java-mode-hook 'ensime-scala-mode-hook)

@@ -22,5 +22,8 @@
 (global-set-key [f7] 'linum-mode)
 
 ;; what was this for???
- (keyboard-translate ?\C-h ?\C-?) 
+ (keyboard-translate ?\C-h ?\C-?)
 
+(setq ido-everywhere t)
+(setq ido-max-directory-size 100000)
+(ido-mode (quote both))
