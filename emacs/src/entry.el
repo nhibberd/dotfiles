@@ -13,7 +13,6 @@
 ;;(load-library "gitx")
 (load-library "pythonx")
 (load-library "toggletest")
-(load-library "scalax")
 (load-library "javascriptx")
 (load-library "haskellx")
 (load-library "groovyx")

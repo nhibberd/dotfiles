@@ -26,6 +26,7 @@ for DIR in \
 	/opt/java/bin \
 	/opt/java/jre/bin \
 	/usr/local/share/scala/bin \
+	/usr/local/share/hadoop/bin \
 	/bin /usr/bin /sbin /usr/sbin \
 	/usr/ccs/bin /opt/SUNWspro/bin /opt/SUNWmd/sbin \
 	/usr/ucb /bsd43/bin /usr/.ucbucb /usr/.ucbbin \
