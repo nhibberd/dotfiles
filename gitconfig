@@ -8,5 +8,5 @@
 	default = simple
 [alias]
 	ignore = update-index --assume-unchanged
-	showignored = ! git ls-files -v | grep ^h
+	showignored = ! git ls-files -v | grep ^h | awk '{print $2}'
 	unignore = update-index --no-assume-unchanged
