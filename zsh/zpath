@@ -17,6 +17,7 @@ for DIR in \
 	"$HOME/.ghc/bin" \
         "$HOME/.cabal/bin" \
         "$HOME/bin.etools" \
+	"$HOME/.ambiata/bin" \
 	/Applications/Emacs.app/Contents/MacOS \
 	/usr/remote/mh/bin /usr/local/mh/bin /usr/contrib/mh/bin /usr/new/mh \
 	/usr/local/bin /usr/local/sbin \

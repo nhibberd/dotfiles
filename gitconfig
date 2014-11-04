@@ -10,3 +10,9 @@
 	ignore = update-index --assume-unchanged
 	showignored = ! git ls-files -v | grep ^h | awk '{print $2}'
 	unignore = update-index --no-assume-unchanged
+[merge]
+	tool = diff
+[color "status"]
+       added = blue
+       changed = red
+       untracked = yellow

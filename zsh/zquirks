@@ -57,14 +57,14 @@ setopt -B
 # set -o vi
 
 # or not...
-set -o emacs                           
+set -o emacs
 bindkey -e
 
 # History tweaks...
-set +K                                  # BANG_HIST  
+set +K                                  # BANG_HIST
 HISTSIZE=2000
 SAVEHIST=2000
-HISTFILE=$HOME/.history 
+HISTFILE=$HOME/.history
 export HISTSIZE SAVEHIST HISTFILE
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
