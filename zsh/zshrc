@@ -64,7 +64,7 @@ export zsh=$(which zsh 2>/dev/null)
 
 case $TERM in
     xterm*)
-        [ ! -z "$DISPLAY" ] && xset b off
+#        [ ! -z "$DISPLAY" ] && xset b off
         chpwd() {print -Pn "\e]0;%n@%m: %~\a"}
         chpwd
         ;;
