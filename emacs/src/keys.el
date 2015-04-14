@@ -8,6 +8,8 @@
 
 (global-set-key "\C-c\C-k" 'browse-kill-ring)
 
+(define-key global-map (kbd "\C-c SPC") 'ace-jump-mode)
+
 (global-set-key [f12] 'compile)
 (global-set-key [f11] 'ensime-builder-build)
 (global-set-key [f10] 'ensime-typecheck-all)
