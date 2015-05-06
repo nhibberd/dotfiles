@@ -5,12 +5,15 @@
 
 (setq diff-switches "-u")
 
+;; emacs 24
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+
 ;(setq require-final-newline 'query)
 
 (setq line-number-mode t)
 (setq column-number-mode t)
 
-;(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 (setq display-time-24hr-format t)
 (display-time)
