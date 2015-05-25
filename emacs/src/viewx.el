@@ -6,7 +6,15 @@
 (setq diff-switches "-u")
 
 ;; emacs 24
+
+;; this breaks pasting code
 (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+
+;;pbcopy osx
+(defun pbcopy ()
+  (interactive)
+  (call-process-region (point) (mark) "pbcopy")
+  (setq deactivate-mark t))
 
 ;(setq require-final-newline 'query)
 
