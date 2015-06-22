@@ -19,6 +19,7 @@
 (load-library "bbdbx")
 (load-library "dash")
 (load-library "s")
+(load-library "wgrep")
 (load-library "projectile")
 ;;(load-library "orgmodex")
 
