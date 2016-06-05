@@ -184,3 +184,4 @@ alias xx="TASK_FILE=$HOME/.task x"
 
 alias winecfg="LD_32_LIBRARY_PATH=/compat/i386/usr/local/lib PATH=/compat/i386/usr/local/bin:$PATH /compat/i386/usr/local/bin/winecfg"
 alias wine32="LD_32_LIBRARY_PATH=/compat/i386/usr/local/lib PATH=/compat/i386/usr/local/bin:$PATH /compat/i386/usr/local/bin/wine"
+alias vpn="sudo openconnect -u nhibberd https://vpn.ambiata.com --certificate $HOME/work/personal/creds/vpn/nhibberd.crt --sslkey $HOME/work/personal/creds/vpn/nhibberd.key"

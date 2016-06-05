@@ -3,7 +3,8 @@ XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT
 xterm*utf8: 1
 Xft*antialias:		true
 Xft*dpi:		96
-xterm*faceName:		DejaVu Sans Mono Book:pixelsize=16
+Xft.dpi: 120
+xterm*faceName:		DejaVu Sans Mono Book:pixelsize=20
 xterm*background:		#121212
 xterm*foreground:		#16CC55
 XTerm*metaSendsEscape: True
@@ -28,7 +29,7 @@ xterm*scrollBar: false
 ! darkMangenta + Mangenta
 *color5:  #75507b
 *color13: #ad7fa8
-!DarkCyan + Cyan 
+!DarkCyan + Cyan
 *color6:  #06989a
 *color14: #729fcf
 ! LightGrey + White
@@ -37,4 +38,4 @@ xterm*scrollBar: false
 
 Emacs.FontBackend: xft
 dzen2.FontBackend: xft
-dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
+dzen2.font:			DejaVu Sans Mono Book:pixelsize=20

@@ -24,6 +24,7 @@ export LANG=en_AU.UTF-8
 . "$ZDOTDIR/.zsh/zprompt"
 . "$ZDOTDIR/.zsh/zquirks"
 . "$ZDOTDIR/.zsh/zfunctions"
+. "$ZDOTDIR/.zsh/ghc"
 . "$ZDOTDIR/.zsh/zalias"
 . "$ZDOTDIR/.zsh/zcompletion"
 . "$ZDOTDIR/.zsh/zkeybinding"  #destroyed modkey

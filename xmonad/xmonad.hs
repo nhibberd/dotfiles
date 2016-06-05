@@ -128,7 +128,7 @@ nickConfig h = myUrgencyHook $
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
-myWorkspaces = ["1:code", "2:sys", "3:www", "4:debug", "5:subl", "6:music", "7:proxy"] ++ map show [8..9]
+myWorkspaces = ["1:code", "2:sys", "3:www", "4:", "5:", "6:music", "7:"] ++ map show [8..9]
 nickPP :: PP
 nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppHidden  = dzenColor "#ffffff"  "#262626" . pad
@@ -139,8 +139,9 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppTitle   = shorten 45
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
                       , ppExtras  = [ loadAvg
-									  , onLogger (wrap "volume: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
+                                      , onLogger (wrap "volume: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
                                       , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/devices/platform/coretemp.0/temp2_input | awk '{print $1/1000}'")
+                                      , battery
                                       , date "%a %b %d  %I:%M %p" ]
                       }
   where
