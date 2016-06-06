@@ -139,8 +139,9 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppTitle   = shorten 45
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
                       , ppExtras  = [ loadAvg
-									  , onLogger (wrap "volume: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
-                                      , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/devices/platform/coretemp.0/temp2_input | awk '{print $1/1000}'")
+                                      , onLogger (wrap "vol: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
+                                      , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/class/thermal/thermal_zone0/temp | awk '{print $1/1000}'")
+                                      , battery
                                       , date "%a %b %d  %I:%M %p" ]
                       }
   where

@@ -2,7 +2,7 @@
 	email = nhibberd@gmail.com
 	name = Nick Hibberd
 [core]
-	editor = Emacs -nw
+	editor = emacs -nw
 	excludesfile = ~/.gitignore
 [push]
 	default = simple

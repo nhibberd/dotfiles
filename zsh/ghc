@@ -1,0 +1,39 @@
+# List available GHC versions
+ghc-list-available() {
+  echo "Available versions:"
+  for ver in $HOME/haskell/ghc-*; do
+    echo "  ${ver##$HOME/haskell/ghc-}"
+  done
+}
+
+# Switch to a specific GHC version
+ghc-switch() {
+  if [ -z "$1" ]; then
+    echo "USAGE: ghc-switch VERSION"
+    ghc-list-available
+    return 1
+  fi
+
+  VER_PATH="$HOME/haskell/ghc-$1"
+  if [ -d "$VER_PATH" ]; then
+    export path=($VER_PATH/bin ${(@)path:#*ghc*})
+    export GHC_VERSION=$1
+    ghc --version
+  else
+    echo "GHC $1 isn't available"
+    ghc-list-available
+    return 1
+  fi
+}
+
+# Cycle GHC versions
+g() {
+  case $GHC_VERSION in
+    7.8.4)
+      ghc-switch 7.10.2
+      ;;
+    *)
+      ghc-switch 7.8.4
+      ;;
+  esac
+}

@@ -159,7 +159,7 @@ alias 8='fg %8'
 alias 9='fg %9'
 alias iname='find . -iname'
 alias r='git pull --rebase'
-alias g=git
+#alias g=git
 alias gg='git grep'
 alias gd='git diff'
 alias gc='git checkout'
@@ -170,7 +170,7 @@ alias gb='git branch -a'
 alias gp='git log -p'
 alias gt='git log --graph --pretty=format:"%h -%d %s (%cr)" --abbrev-commit --date=relative'
 alias n='vi $HOME/work/scratch.note'
-alias emacs="Emacs"
+alias emacs="emacs"
 alias emnw="emacs -nw"
 alias abcde="abcde -d /dev/cd0"
 if [ -x /bin/zsh ]; then
@@ -186,3 +186,7 @@ alias xx="TASK_FILE=$HOME/.task x"
 alias winecfg="LD_32_LIBRARY_PATH=/compat/i386/usr/local/lib PATH=/compat/i386/usr/local/bin:$PATH /compat/i386/usr/local/bin/winecfg"
 alias wine32="LD_32_LIBRARY_PATH=/compat/i386/usr/local/lib PATH=/compat/i386/usr/local/bin:$PATH /compat/i386/usr/local/bin/wine"
 alias files="git status -sb | tail -n +2 | awk '{print \$2}' | xargs"
+alias vpn="sudo openconnect -u nhibberd https://vpn.ambiata.com --certificate $HOME/work/personal/creds/vpn/nhibberd.crt --sslkey $HOME/work/personal/creds/vpn/nhibberd.key"
+alias chromium="chromium --proxy-pac-url=file:///home/nick/bin/proxy.pac"
+alias cox="box -e ci"
+alias hox="box -e hydrogen"
