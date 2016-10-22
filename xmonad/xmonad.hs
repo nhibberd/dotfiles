@@ -128,7 +128,7 @@ nickConfig h = myUrgencyHook $
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
-myWorkspaces = ["1:code", "2:sys", "3:www", "4:debug", "5:subl", "6:music", "7:proxy"] ++ map show [8..9]
+myWorkspaces = ["1:code", "2:sys", "3:www", "4:", "5:", "6:music", "7:proxy"] ++ map show [8..9]
 nickPP :: PP
 nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppHidden  = dzenColor "#ffffff"  "#262626" . pad
@@ -140,7 +140,7 @@ nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppOrder   = \(ws:l:t:exs) -> [t,l,ws]++exs
                       , ppExtras  = [ loadAvg
                                       , onLogger (wrap "vol: " "^fg()")  (logCmd "amixer get Master | grep 'Front Left: Playback' | awk -F'[][]' '{print $2}'")
-                                      , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/class/thermal/thermal_zone0/temp | awk '{print $1/1000}'")
+                                      , onLogger (wrap "cpu: " "^fg()c")  (logCmd "cat /sys/class/thermal/thermal_zone1/temp | awk '{print $1/1000}'")
                                       , battery
                                       , date "%a %b %d  %I:%M %p" ]
                       }
@@ -328,6 +328,11 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
+-- mth
+-- avoidStruts(windowNavigation(tiled ||| Mirror tiled ||| (TwoPane (3/100) (1/2)) ||| Grid ||| Accordion) ||| Full ) ||| Full
+--
+-- prev
+-- lessBorders Screen $ avoidStruts(tiled ||| Mirror tiled ||| Full) ||| Full
 myLayout = lessBorders Screen $ avoidStruts(tiled ||| Mirror tiled ||| Full) ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
