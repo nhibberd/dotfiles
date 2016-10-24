@@ -31,7 +31,6 @@ esac
 autoload -U colors && colors
 
 #PS1="%S[%m:%.]%s $PS1"
-#PS1="[%{$fg[blue]%}%m%{$reset_color%}:%.] $PS1"
+PS1="[%{$fg[blue]%}%m%{$reset_color%}:%.] $PS1"
 #PS1="[%{$fg[blue]%}\m/%{$reset_color%}:%.] $PS1"
 #PS1="[%{$fg[blue]%}λ%{$reset_color%}:%.] $PS1"
-PS1="[%{$fg[blue]%}beast%{$reset_color%}:%.] $PS1"

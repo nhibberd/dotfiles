@@ -15,7 +15,6 @@ for DIR in \
         "$OS_BIN" "$HOST_BIN" "$COMMON_BIN" \
 	"$ZDOTDIR/bin" "$HOME/bin" \
         "$HOME/haskell/ghc-7.10.2/bin" \
-        "$HOME/.cabal/bin" \
         "$HOME/bin.etools" \
 	/usr/remote/mh/bin /usr/local/mh/bin /usr/contrib/mh/bin /usr/new/mh \
 	/usr/local/bin /usr/local/sbin \
