@@ -22,5 +22,7 @@
 (load-library "s")
 (load-library "projectile")
 ;;(load-library "orgmodex")
+(load-library "flycheck")
+(load-library "rust")
 
 (projectile-global-mode)

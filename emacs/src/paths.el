@@ -29,7 +29,7 @@
 (add-exec-path "bin/haskell")
 )
 
-
-
-(setenv "PATH" (concat (getenv "PATH") (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))))
-(setq exec-path (append exec-path ' (concat (getenv "EDOTDIR") "/bin/haskell")))
+;;(setenv "PATH" (concat (getenv "PATH") (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))))
+;;(setq exec-path (append exec-path ' (concat (getenv "EDOTDIR") "/bin/haskell")))
+(setenv "PATH" (concat (getenv "PATH") ":/home/nick/.cargo/bin"))
+(setq exec-path (append exec-path '("/home/nick/.cargo/bin")))
