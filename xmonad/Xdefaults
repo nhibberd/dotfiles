@@ -1,6 +1,6 @@
 Xft*antialias:		true
 Xft*dpi:		96
-xterm*faceName:		DejaVu Sans Mono Book:pixelsize=16
+xterm*faceName:		DejaVu Sans Mono Book:pixelsize=14
 *background:		#121212
 *foreground:		#16CC55
 XTerm*metaSendsEscape: True
@@ -23,10 +23,9 @@ xterm*allowTcapOps: True
 ! DarkMangenta + Mangenta
 *color5:  #75507b
 *color13: #ad7fa8
-!DarkCyan + Cyan 
+!DarkCyan + Cyan
 *color6:  #06989a
 *color14: #729fcf
 ! LightGrey + White
 *color7:  #d3d7cf
 *color15: #eeeeec
-
