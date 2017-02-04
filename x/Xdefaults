@@ -4,10 +4,11 @@ xterm*utf8: 1
 Xft*antialias:		true
 Xft*dpi:		96
 Xft.dpi: 120
-xterm*faceName:		DejaVu Sans Mono Book:pixelsize=16
+xterm*faceName:		DejaVu Sans Mono Book:pixelsize=14
 xterm*background:		#121212
 xterm*foreground:		#16CC55
 XTerm*metaSendsEscape: True
+XTerm*scaleHeight: 1.01
 xterm*allowTcapOps: True
 XTerm*bellIsUrgent: true
 xterm*scrollBar: false
@@ -38,4 +39,4 @@ xterm*scrollBar: false
 
 Emacs.FontBackend: xft
 dzen2.FontBackend: xft
-dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
+dzen2.font:			DejaVu Sans Mono Book:pixelsize=14
