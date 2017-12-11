@@ -10,6 +10,7 @@
 	ignore = update-index --assume-unchanged
 	showignored = ! git ls-files -v | grep ^h | awk '{print $2}'
 	unignore = update-index --no-assume-unchanged
+        pr = !git fetch origin refs/pull/$1/head:pr$1 && :
 [merge]
 	tool = diff
 [color "status"]
