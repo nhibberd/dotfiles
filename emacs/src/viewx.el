@@ -31,7 +31,7 @@
 (setq-default ispell-program-name "aspell")
 
 ;;(set-default-font "DejaVu Sans Mono-13")
-(set-default-font "DejaVu Sans Mono-12")
+(set-default-font "DejaVu Sans Mono-10")
 ;;(set-default-font "DejaVu Sans Mono-16")
 
 ;;(set-face-attribute 'default nil :height 115)

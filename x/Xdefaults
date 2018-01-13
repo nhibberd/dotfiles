@@ -7,6 +7,7 @@ Xft.hinting: 1
 Xft.rgba:      rgb
 Xft*dpi:		96
 Xft.dpi: 110
+! Emacs.dpi: 180
 xterm*faceName:		DejaVu Sans Mono Book:pixelsize=15
 xterm*background:		#121212
 xterm*foreground:		#16CC55

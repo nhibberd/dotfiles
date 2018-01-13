@@ -102,8 +102,7 @@ main = do h <- spawnPipe "dzen2 -ta r -fg '#a8a3f7' -bg '#3f3c6d' -e 'onstart=lo
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 
-
-nickConfig h = myUrgencyHook $
+nickConfig h = myUrgencyHook . docks $
      defaultConfig
        {
           borderWidth             = 2
@@ -129,6 +128,7 @@ myUrgencyHook = withUrgencyHook dzenUrgencyHook
   { args = ["-bg", "yellow", "-fg", "black"] }
 
 myWorkspaces = ["1:code", "2:sys", "3:www", "4:", "5:", "6:music", "7:proxy"] ++ map show [8..9]
+
 nickPP :: PP
 nickPP = defaultPP { ppHiddenNoWindows = showNamedWorkspaces
                       , ppHidden  = dzenColor "#ffffff"  "#262626" . pad
@@ -254,7 +254,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- toggle the status bar gap (used with avoidStruts from Hooks.ManageDocks)
     -- , ((modm , xK_b ), sendMessage ToggleStruts)
-
     , ((controlMask, xK_Right), sendMessage $ Go R)
     , ((controlMask, xK_Left), sendMessage $ Go L)
     , ((controlMask, xK_Up), sendMessage $ Go U)
@@ -264,7 +263,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_c    ), spawn "chromium")
     , ((modm .|. shiftMask, xK_m    ), spawn "chromium --app='https://mail.google.com'")
 
-     -- volume control
+    -- volume control
+{--
+
+# Music Player controls
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+--}
     , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 5%+")
     , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 5%-")
     , ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle")
@@ -333,7 +339,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 --
 -- prev
 -- lessBorders Screen $ avoidStruts(tiled ||| Mirror tiled ||| Full) ||| Full
-myLayout = lessBorders Screen $ avoidStruts(tiled ||| Mirror tiled ||| Full) ||| Full
+myLayout = lessBorders Screen $ avoidStrutsOn [U] (tiled ||| Mirror tiled ||| Full) ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -362,20 +368,18 @@ myLayout = lessBorders Screen $ avoidStruts(tiled ||| Mirror tiled ||| Full) |||
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll
-    [ isFullscreen --> doFullFloat
+
+myManageHook = className >>= \c -> Trace.traceM ("FRED: " ++ show c) >> composeAll [
+      className =? "Spotify" --> doShift (myWorkspaces !! 6) --"6:music"
     , className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore
-    , className =? "jetbrains-idea" --> doShift "1:code"
-    , className =? "jetbrains-idea-ce" --> doShift "1:code"
-    , className =? "Eclipse" --> doShift "1:code"
+--    , resource  =? "desktop_window" --> doIgnore
+--    , resource  =? "kdesktop"       --> doIgnore
+    , className =? "Emacs" --> doShift "1:code"
     , className =? "Chromium" --> doShift "3:www"
-    , className =? "Firefox" --> doShift "4:debug"
-    , className =? "Pidgin" --> doShift "5:subl"
-    , className =? "Wine" --> doShift "4:debug"
-    , className =? "Vuze" --> doShift "9" ]
+    , className =? "Vuze" --> doShift "9"
+    , isFullscreen --> doFullFloat
+    ]
 
 ------------------------------------------------------------------------
 -- Status bars and logging
