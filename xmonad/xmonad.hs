@@ -91,8 +91,9 @@ import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioMute,
 import XMonad.Hooks.EwmhDesktops
 
 
-main = do h <- spawnPipe "dzen2 -ta r -fg '#a8a3f7' -bg '#3f3c6d' -e 'onstart=lower'"
-          xmonad $ nickConfig h
+main = do
+  h <- spawnPipe "dzen2 -ta r -fg '#a8a3f7' -bg '#3f3c6d' -e 'onstart=lower'"
+  xmonad $ nickConfig h
 
 
 

@@ -21,6 +21,7 @@
 (load-library "s")
 (load-library "wgrep")
 (load-library "projectile")
+;;(load-library "functions")
 ;;(load-library "orgmodex")
 
 (projectile-global-mode)

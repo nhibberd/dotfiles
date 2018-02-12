@@ -94,3 +94,13 @@ keyboard()
     {
     sudo su -c "echo $1 > /sys/class/leds/smc::kbd_backlight/brightness"
     }
+
+fbox() {
+  BOX_ENVIRONMENT=$(box --bash-completion-index 2 --bash-completion-word box --bash-completion-word -e | fzf)
+  if [ ! -z "$BOX_ENVIRONMENT" ]; then
+    BOX_INSTANCE=$(box -e $BOX_ENVIRONMENT ls | tail -n +2 | fzf | awk '{print $1 ":" $2 "::" $6}')
+    if [ ! -z "$BOX_INSTANCE" ]; then
+      print -z "box -e $BOX_ENVIRONMENT ssh $BOX_INSTANCE"
+    fi
+  fi
+}
