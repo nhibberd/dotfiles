@@ -1,14 +1,23 @@
 ! copy and paste hack http://www.davidsimmons.com/soft/xtermhacks/
-XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
-xterm*utf8: 1
+ XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+xterm*utf8: true
 Xft*antialias:		true
 Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.rgba:      rgb
-Xft*dpi:		96
-Xft.dpi: 110
-! Emacs.dpi: 180
-xterm*faceName:		DejaVu Sans Mono Book:pixelsize=15
+
+Xft*dpi: 192
+Xft.dpi: 192
+
+!Xft*dpi:		96
+
+!Xft.dpi: 110
+!Emacs.dpi: 180
+
+!xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=15 ! external
+xterm*faceName:		DejaVu Sans Mono Book:pixelsize=32 ! laptop
+! xrdb ~/.Xdefaults
+
 xterm*background:		#121212
 xterm*foreground:		#16CC55
 XTerm*metaSendsEscape: True
@@ -42,4 +51,5 @@ xterm*scrollBar: false
 
 Emacs.FontBackend: xft
 dzen2.FontBackend: xft
-dzen2.font:			DejaVu Sans Mono Book:pixelsize=15
+!dzen2.font:			DejaVu Sans Mono Book:pixelsize=15
+dzen2.font:			DejaVu Sans Mono Book:pixelsize=32
