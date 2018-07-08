@@ -6,7 +6,7 @@
 
 (add-path "lib")
 (add-path "lib/python")
-(add-path "lib/scala")
+(add-path "lib/scala-mode2")
 (add-path "lib/yas")
 (add-path "lib/killring")
 (add-path "lib/git")
@@ -18,6 +18,7 @@
 (add-path "lib/bbdb")
 (add-path "lib/norang-org")
 (add-path "lib/dash.el")
+(add-path "lib/ace-jump-mode.el")
 (add-path "lib/projectile")
 (add-path "src")
 )
@@ -29,7 +30,7 @@
 (add-exec-path "bin/haskell")
 )
 
-;;(setenv "PATH" (concat (getenv "PATH") (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))))
-;;(setq exec-path (append exec-path ' (concat (getenv "EDOTDIR") "/bin/haskell")))
-(setenv "PATH" (concat (getenv "PATH") ":/home/nick/.cargo/bin"))
-(setq exec-path (append exec-path '("/home/nick/.cargo/bin")))
+
+
+(setenv "PATH" (concat (getenv "PATH") (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))))
+(setq exec-path (append exec-path ' (concat (getenv "EDOTDIR") "/bin/haskell")))

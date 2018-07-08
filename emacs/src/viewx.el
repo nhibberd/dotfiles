@@ -5,12 +5,23 @@
 
 (setq diff-switches "-u")
 
+;; emacs 24
+
+;; this breaks pasting code
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+
+;;pbcopy osx
+(defun pbcopy ()
+  (interactive)
+  (call-process-region (point) (mark) "pbcopy")
+  (setq deactivate-mark t))
+
 ;(setq require-final-newline 'query)
 
 (setq line-number-mode t)
 (setq column-number-mode t)
 
-;(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 (setq display-time-24hr-format t)
 (display-time)
@@ -19,8 +30,8 @@
 
 (setq-default ispell-program-name "aspell")
 
+;;(set-default-font "DejaVu Sans Mono-13")
 (set-default-font "DejaVu Sans Mono-10")
-;;(set-default-font "DejaVu Sans Mono-12")
 ;;(set-default-font "DejaVu Sans Mono-16")
 
 ;;(set-face-attribute 'default nil :height 115)
@@ -44,20 +55,14 @@
  (set-face-foreground 'vertical-border "grey30")
  )
 
+(set-face-foreground 'font-lock-comment-face "grey60")
+(set-face-foreground 'font-lock-comment-delimiter-face "grey60")
 
-;; use M-x list-faces-display. to see what can be set
-
-;; (set-face-foreground 'font-lock-comment-face "#A52A2A")
-;; (set-face-foreground 'font-lock-comment-delimiter-face "#A52A2A")
-;; (set-face-foreground 'font-lock-doc-face "#A52A2A")
-
-(set-face-foreground 'font-lock-comment-face "grey52")
-(set-face-foreground 'font-lock-comment-delimiter-face "grey52")
 (set-face-foreground 'font-lock-doc-face "grey52")
-
 (set-face-foreground 'font-lock-keyword-face "#86ABD9")
+;;(set-face-foreground 'font-lock-keyword-face "#16CC55")
 (set-face-foreground 'font-lock-string-face "#F5F5F5")
-(set-face-foreground 'font-lock-constant-face  "#16CC55")
+(set-face-foreground 'font-lock-constant-face "#16CC55")
 (set-face-foreground 'font-lock-type-face "#16CC55")
 (set-face-foreground 'minibuffer-prompt "#86ABD9")
 (set-face-foreground 'ido-subdir "#16CC55")
@@ -88,7 +93,7 @@
 (set-face-bold-p 'font-lock-comment-delimiter-face t)
 (set-face-bold-p 'font-lock-keyword-face t)
 (set-face-bold-p 'font-lock-string-face nil)
-(set-face-bold-p 'font-lock-constant-face  nil)
+
 (set-face-bold-p 'font-lock-type-face t)
 (set-face-bold-p 'font-lock-function-name-face nil)
 (set-face-bold-p 'font-lock-variable-name-face nil)
