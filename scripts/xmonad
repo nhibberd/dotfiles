@@ -1,0 +1,5 @@
+#!/bin/sh -eu
+
+ARGS=${1:-""}
+
+GHC_PACKAGE_PATH=$HOME/haskell/xmonad/.cabal-sandbox/x86_64-linux-ghc-7.10.2-packages.conf.d/: haskell-xmonad $ARGS
