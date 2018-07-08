@@ -1,4 +1,4 @@
-#
+
 # .zshrc
 #
 #
@@ -24,10 +24,12 @@ export LANG=en_AU.UTF-8
 . "$ZDOTDIR/.zsh/zprompt"
 . "$ZDOTDIR/.zsh/zquirks"
 . "$ZDOTDIR/.zsh/zfunctions"
-. "$ZDOTDIR/.zsh/ghc"
 . "$ZDOTDIR/.zsh/zalias"
 . "$ZDOTDIR/.zsh/zcompletion"
 . "$ZDOTDIR/.zsh/zkeybinding"  #destroyed modkey
+[ -f $ZDOTDIR/.zsh/zprivate ] && . "$ZDOTDIR/.zsh/zprivate"
+. "$ZDOTDIR/.zsh/ghc"
+. "$ZDOTDIR/.zsh/git-completion.bash"
 
 # Zsh will allow "cd localsubdir" even if CDPATH doesn't have "." or "" in it.
 # But, without "." or null path, /bin/sh cd will fail on local subdirectories.
@@ -63,7 +65,7 @@ export zsh=$(which zsh 2>/dev/null)
 
 case $TERM in
     xterm*)
-        [ ! -z "$DISPLAY" ] && xset b off
+#        [ ! -z "$DISPLAY" ] && xset b off
         chpwd() {print -Pn "\e]0;%n@%m: %~\a"}
         chpwd
         ;;

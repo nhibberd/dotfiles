@@ -14,9 +14,10 @@ NEWPATH=
 for DIR in \
         "$OS_BIN" "$HOST_BIN" "$COMMON_BIN" \
 	"$ZDOTDIR/bin" "$HOME/bin" \
-        "$HOME/haskell/ghc-7.10.2/bin" \
-        "$HOME/.cargo/bin" \
-        "$HOME/bin.etools" \
+	"$HOME/haskell/ghc-8.0.1/bin" \
+        "$HOME/.cabal/bin" \
+	"$HOME/.ambiata/bin" \
+	/Applications/Emacs.app/Contents/MacOS \
 	/usr/remote/mh/bin /usr/local/mh/bin /usr/contrib/mh/bin /usr/new/mh \
 	/usr/local/bin /usr/local/sbin \
 	/usr/remote/bin /usr/remote/sbin /usr/remote/kvm \
@@ -24,6 +25,8 @@ for DIR in \
 	/usr/java/jdk/bin \
 	/opt/java/bin \
 	/opt/java/jre/bin \
+	/usr/local/share/scala/bin \
+	/usr/local/share/hadoop/bin \
 	/bin /usr/bin /sbin /usr/sbin \
 	/usr/ccs/bin /opt/SUNWspro/bin /opt/SUNWmd/sbin \
 	/usr/ucb /bsd43/bin /usr/.ucbucb /usr/.ucbbin \
