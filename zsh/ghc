@@ -30,7 +30,7 @@ ghc-switch() {
 g() {
   case $GHC_VERSION in
     7.10.2)
-      ghc-switch 8.0.1
+      ghc-switch 8.2.2
       ;;
     *)
       ghc-switch 7.10.2

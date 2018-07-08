@@ -6,7 +6,7 @@
 #
 
 
-alias s="ls -asF"
+# alias s="ls -asF"
 alias a="ls -asl"
 
 
@@ -31,7 +31,8 @@ which nvi > /dev/null 2>&1 && {
 
 
 #alias -x echo="print -R"		# Good 'ol Berzerkely
-alias k='stty sane intr ^C kill ^U erase ^\?'
+# alias k='stty sane intr ^C kill ^U erase ^\?'
+aliask='kubectl'
 alias h="fc -l"
 alias bell='echo -e "\a"'
 
@@ -196,3 +197,6 @@ alias usx="box -e prod.us-east-1"
 alias lock="xscreensaver-command --lock"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias xxx='stack'
+alias k='kubectl'
+# alias s='git for-each-ref --sort=-committerdate --format="%(refname)" refs/heads | fzf --preview="git log {}"'
