@@ -6,8 +6,8 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.rgba:      rgb
 
-Xft*dpi: 192
-Xft.dpi: 192
+Xft*dpi: 81
+Xft.dpi: 81
 !Xft*dpi:		96
 
 !Xft.dpi: 110
@@ -50,5 +50,5 @@ xterm*scrollBar: false
 
 Emacs.FontBackend: xft
 dzen2.FontBackend: xft
-dzen2.font:			DejaVu Sans Mono Book:pixelsize=15
+dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
 !dzen2.font:			DejaVu Sans Mono Book:pixelsize=32
