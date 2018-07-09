@@ -71,7 +71,8 @@ case $TERM in
         ;;
 esac
 
-export PACKAGEROOT="http://mirror.internode.on.net"
+# export PACKAGEROOT="http://mirror.internode.on.net"
+unset GHC_PACKAGE_PATH
 
 [ -f $HOME/etc/environments ] && source $HOME/etc/environments
 
