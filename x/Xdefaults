@@ -13,7 +13,7 @@ Xft.dpi: 81
 !Xft.dpi: 110
 !Emacs.dpi: 180
 
-xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=15
+xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=16
 !xterm*faceName:		DejaVu Sans Mono Book:pixelsize=32
 ! xrdb ~/.Xdefaults
 
@@ -50,5 +50,6 @@ xterm*scrollBar: false
 
 Emacs.FontBackend: xft
 dzen2.FontBackend: xft
-dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
+!dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
+dzen2.font:			DejaVu Sans Mono Book:pixelsize=20
 !dzen2.font:			DejaVu Sans Mono Book:pixelsize=32
