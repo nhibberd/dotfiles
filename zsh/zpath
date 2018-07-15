@@ -37,7 +37,8 @@ for DIR in \
 	${REPOSITORY:+"$REPOSITORY/newrepos/bin"} \
 	${II_SYSTEM:+"$II_SYSTEM/ingres/bin"} \
 	/projman/timerec/bin /projman/lessjunk/bin \
-	/usr/games
+	/usr/games \
+        "$HOME/.nix-profile/bin"
 do
     [ -d $DIR ] && NEWPATH="${NEWPATH:+${NEWPATH}:}$DIR"
 done
