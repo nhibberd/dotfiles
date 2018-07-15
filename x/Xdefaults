@@ -50,6 +50,5 @@ xterm*scrollBar: false
 
 Emacs.FontBackend: xft
 dzen2.FontBackend: xft
-!dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
-dzen2.font:			DejaVu Sans Mono Book:pixelsize=20
+dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
 !dzen2.font:			DejaVu Sans Mono Book:pixelsize=32
