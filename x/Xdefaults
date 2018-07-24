@@ -6,15 +6,16 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.rgba:      rgb
 
-Xft*dpi: 81
-Xft.dpi: 81
+Xft*dpi: 156
+Xft.dpi: 156
 !Xft*dpi:		96
 
 !Xft.dpi: 110
-Emacs.dpi: 110
+Emacs.dpi: 96
 
-xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=16
+!xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=16
 !xterm*faceName:		DejaVu Sans Mono Book:pixelsize=32
+xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=24
 ! xrdb ~/.Xdefaults
 
 xterm*background:		#121212
@@ -50,5 +51,6 @@ xterm*scrollBar: false
 
 Emacs.FontBackend: xft
 dzen2.FontBackend: xft
-dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
+!dzen2.font:			DejaVu Sans Mono Book:pixelsize=16
+dzen2.font:			DejaVu Sans Mono Book:pixelsize=24
 !dzen2.font:			DejaVu Sans Mono Book:pixelsize=32
