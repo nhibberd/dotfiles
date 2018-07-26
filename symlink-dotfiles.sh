@@ -29,4 +29,7 @@ ln -s dotfiles/gitignore .gitignore
 
 # ssh
 [ ! -d $HOME/.ssh ] && mkdir $HOME/.ssh
+
+# bazel
+ln -s dotfiles/bazelrc .bazelrc
 )
