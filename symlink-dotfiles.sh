@@ -35,5 +35,5 @@ ln -s dotfiles/bazelrc .bazelrc
 
 # ghci
 [ ! -d $HOME/.ghc ] && mkdir $HOME/.ghc
-ln -s dotfiles/ghci.conf $HOME/.ghc/ghci.conf
+ln -s $HOME/dotfiles/ghci.conf $HOME/.ghc/ghci.conf
 )
