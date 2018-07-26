@@ -1,4 +1,8 @@
-(load-library "haskell-site-file")
+(add-to-list 'load-path "~/dotfiles/emacs/lib/haskell-mode/")
+(require 'haskell-mode-autoloads)
+;;(add-to-list 'Info-default-directory-list "~/lib/emacs/haskell-mode/")
+
+;;(load-library "haskell-site-file")
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
