@@ -1,0 +1,28 @@
+#!/bin/sh -eu
+#
+# This is a convenience script for running the Haskell REPL (ghci)
+# against a Bazel target:
+#  - haskell_library
+#  - haskell_binary
+#  - haskell_test
+#  - haskell_proto_library
+#
+# Usage:
+#   bazel-repl dir/project
+#   bazel-repl dir/project:hspec
+#
+# Note that if the script is run from within a subdirectory,
+# the REPL will be started at the workspace root,
+# due to current limitations of rules_haskell.
+
+# Run "query" to get the absolute path to the target; for example:
+# "platform-effect" -> "//haskell/platform-effect:platform-effect"
+TARGET="$(bazel query $1)"
+
+echo "Loading REPL for " ${TARGET}
+bazel build "${TARGET}"
+
+# Currently, rules_haskell requires that the REPL be run from the workspace
+# directory.
+cd "$(bazel info workspace)"
+bazel run --direct_run "${TARGET}"-repl
