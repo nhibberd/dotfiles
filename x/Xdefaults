@@ -11,7 +11,7 @@ Xft.dpi: 156
 !Xft*dpi:		96
 
 !Xft.dpi: 110
-Emacs.dpi: 96
+!Emacs.dpi: 96
 
 !xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=16
 !xterm*faceName:		DejaVu Sans Mono Book:pixelsize=32
