@@ -1,0 +1,15 @@
+Targets are defined in BUILD files, relative to the top-level WORKSPACE.
+:baz
+  The target baz, in the same BUILD file
+//foo/bar:baz
+  The target baz, defined in foo/bar/BUILD
+//foo/bar
+  syntactic sugar for //foo/bar:bar
+//foo/bar:all
+  Every target in foo/bar/BUILD
+//foo/bar/...
+  Every target in foo/bar/**/BUILD
+
+Alternately:
+  “//” means the WORKSPACE directory
+  “:” means the BUILD file
