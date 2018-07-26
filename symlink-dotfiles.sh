@@ -32,4 +32,8 @@ ln -s dotfiles/gitignore .gitignore
 
 # bazel
 ln -s dotfiles/bazelrc .bazelrc
+
+# ghci
+[ ! -d $HOME/.ghc ] && mkdir $HOME/.ghc
+ln -s dotfiles/ghci.conf $HOME/.ghc/ghci.conf
 )
