@@ -1,6 +1,6 @@
-(add-to-list 'load-path "~/dotfiles/emacs/lib/haskell-mode/")
+(add-to-list 'load-path (concat (getenv "EDOTDIR") "/lib/haskell"))
 (require 'haskell-mode-autoloads)
-;;(add-to-list 'Info-default-directory-list "~/lib/emacs/haskell-mode/")
+(add-to-list 'Info-default-directory-list (concat (getenv "EDOTDIR") "/lib/haskell"))
 
 ;;(load-library "haskell-site-file")
 
