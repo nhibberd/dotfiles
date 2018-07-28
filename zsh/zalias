@@ -31,7 +31,7 @@ which nvi > /dev/null 2>&1 && {
 
 
 #alias -x echo="print -R"		# Good 'ol Berzerkely
-alias k='stty sane intr ^C kill ^U erase ^\?'
+#alias k='stty sane intr ^C kill ^U erase ^\?'
 alias h="fc -l"
 alias bell='echo -e "\a"'
 
