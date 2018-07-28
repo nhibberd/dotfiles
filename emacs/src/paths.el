@@ -12,6 +12,7 @@
 (add-path "lib/git")
 (add-path "lib/ruby")
 (add-path "lib/haskell")
+(add-path "lib/purescript")
 (add-path "lib/groovy")
 (add-path "lib/auto-complete")
 (add-path "lib/js-comint")
