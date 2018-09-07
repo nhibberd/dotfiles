@@ -13,7 +13,8 @@ umask 022
 
 # In the wild land of internationalisation, we count as foreign.  Pick
 # the right type of foreign to match us or we get those fuckface US dates.
-export LANG=en_AU.UTF-8
+#export LANG=en_AU.UTF-8
+export LANG=en_US.UTF-8
 #export LC_TIME=en_DK	# Works for ... ?  Linux? MacOSX?
 
 [ x"$TERM" = x"xterm-color" ] && TERM=xterm
@@ -30,7 +31,7 @@ export LANG=en_AU.UTF-8
 [ -f $ZDOTDIR/.zsh/zprivate ] && . "$ZDOTDIR/.zsh/zprivate"
 . "$ZDOTDIR/.zsh/ghc"
 . "$ZDOTDIR/.zsh/cabal"
-. "$ZDOTDIR/.zsh/git-completion.bash"
+# . "$ZDOTDIR/.zsh/git-completion.bash"
 
 # Zsh will allow "cd localsubdir" even if CDPATH doesn't have "." or "" in it.
 # But, without "." or null path, /bin/sh cd will fail on local subdirectories.
@@ -75,5 +76,7 @@ esac
 export PACKAGEROOT="http://mirror.internode.on.net"
 
 [ -f $HOME/etc/environments ] && source $HOME/etc/environments
+
+# fpath="$fpath $ZDOTDIR/.zsh/completion"
 
 echo Finished $ZDOTDIR/.zshrc > /dev/tty

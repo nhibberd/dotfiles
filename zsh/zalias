@@ -197,6 +197,5 @@ alias usx="box -e prod.us-east-1"
 alias lock="xscreensaver-command --lock"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
-alias xxx='stack'
 alias k='kubectl'
 # alias s='git for-each-ref --sort=-committerdate --format="%(refname)" refs/heads | fzf --preview="git log {}"'
