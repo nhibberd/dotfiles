@@ -104,3 +104,26 @@ fbox() {
     fi
   fi
 }
+
+
+s() {
+  S_BRANCH=$(git for-each-ref --sort=-committerdate --format="%(refname)" refs/heads | fzf --preview="git log {}")
+  if [ ! -z "S_BRANCH" ]; then
+    R_BRANCH=$(echo $S_BRANCH | sed -e 's@refs/heads/@@')
+    if [ ! -z "$R_BRANCH" ]; then
+      git checkout $R_BRANCH
+#      print -z "git checkout $R_BRANCH"
+    fi
+  fi
+}
+
+sr() {
+  S_BRANCH=$(git for-each-ref --sort=-committerdate --format="%(refname)" refs/remotes | fzf --preview="git log {}")
+  if [ ! -z "S_BRANCH" ]; then
+    R_BRANCH=$(echo $S_BRANCH | sed -e 's@refs/remotes/origin/@@')
+    if [ ! -z "$R_BRANCH" ]; then
+      git checkout $R_BRANCH
+#      print -z "git checkout $R_BRANCH"
+    fi
+  fi
+}
