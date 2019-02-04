@@ -35,6 +35,9 @@ g() {
     8.2.1)
       ghc-switch 8.4.3
       ;;
+    8.4.3)
+      ghc-switch 8.6.3
+      ;;
     *)
       ghc-switch 7.10.2
       ;;
