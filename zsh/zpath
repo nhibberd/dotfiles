@@ -16,6 +16,7 @@ for DIR in \
 	"$ZDOTDIR/bin" "$HOME/bin" \
 	"$HOME/haskell/ghc-8.2.1/bin" \
         "$HOME/.cabal/bin" \
+        "$HOME/.cargo/bin" \
 	"$HOME/.ambiata/bin" \
 	/usr/remote/mh/bin /usr/local/mh/bin /usr/contrib/mh/bin /usr/new/mh \
 	/usr/local/bin /usr/local/sbin \
