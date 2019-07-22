@@ -373,6 +373,7 @@ myLayout = lessBorders Screen $ avoidStrutsOn [U] (tiled ||| Mirror tiled ||| Fu
 myManageHook = className >>= \c -> composeAll [
 --      className =? "Spotify" --> doShift (myWorkspaces !! 6) --"6:music"
       className =? "Spotify" --> doShift "6:music"
+    , className =? "spotify" --> doShift "6:music"
     , className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
 --    , resource  =? "desktop_window" --> doIgnore
