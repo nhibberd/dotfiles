@@ -1,0 +1,20 @@
+#!/bin/sh -eu
+
+: ${GIT_WORK_TREE:=$(git worktree list | awk '{print $1;}')}
+
+if git add -u $GIT_WORK_TREE; then
+    HEAD=$(git diff --name-only --cached | head -n1)
+    TAIL=$(git diff --name-only --cached | wc -l | xargs)
+    let TAIL-- || :
+    case $TAIL in
+        -1)
+            echo "Nothing to do."
+            ;;
+        0)
+            git commit -m "$HEAD"
+            ;;
+        *)
+            git commit -m "$HEAD and $TAIL others"
+            ;;
+    esac
+fi
