@@ -36,4 +36,7 @@ ln -s dotfiles/bazelrc .bazelrc
 # ghci
 [ ! -d $HOME/.ghc ] && mkdir $HOME/.ghc
 ln -s $HOME/dotfiles/ghci.conf $HOME/.ghc/ghci.conf
+
+# agignore
+ln -s $HOME/dotfiles/agignore $HOME/.agignore
 )
