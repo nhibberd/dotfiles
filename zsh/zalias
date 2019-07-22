@@ -6,7 +6,7 @@
 #
 
 
-alias s="ls -asF"
+#alias s="ls -asF"
 alias a="ls -asl"
 
 
@@ -196,3 +196,8 @@ alias usx="box -e prod.us-east-1"
 alias lock="xscreensaver-command --lock"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias bb='bazel build'
+alias bt='bazel test'
+alias ro='git reset --hard origin/master'
+alias raw_files='ag -l -U --path-to-ignore ~/.agignore'
+alias files='raw_files | fzf'

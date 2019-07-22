@@ -1,0 +1,4 @@
+node_modules
+.stack/
+bazel-out
+bazel-gen

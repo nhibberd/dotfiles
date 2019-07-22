@@ -127,3 +127,8 @@ sr() {
     fi
   fi
 }
+
+findf() {
+  FILE=$(ag -l -U --path-to-ignore ~/.agignore | fzf --preview "cat {}")
+  less $FILE
+}
