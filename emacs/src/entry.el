@@ -14,6 +14,7 @@
 (load-library "pythonx")
 (load-library "toggletest")
 (load-library "javascriptx")
+(load-library "typescriptx")
 (load-library "haskellx")
 (load-library "groovyx")
 (load-library "bbdbx")
@@ -23,6 +24,7 @@
 (load-library "projectile")
 ;;(load-library "functions")
 ;;(load-library "orgmodex")
-(load-library "purescriptx")
+;;(load-library "purescriptx")
+
 
 (projectile-global-mode)

@@ -21,6 +21,7 @@
 (add-path "lib/dash.el")
 (add-path "lib/ace-jump-mode.el")
 (add-path "lib/projectile")
+(add-path "lib/typescript-mode.el")
 (add-path "src")
 )
 
