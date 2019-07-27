@@ -25,6 +25,7 @@
 ;;(load-library "functions")
 ;;(load-library "orgmodex")
 ;;(load-library "purescriptx")
+(load-library "rustx")
 
 
 (projectile-global-mode)
