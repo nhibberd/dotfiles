@@ -2,10 +2,15 @@
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
-(add-hook 'before-save-hook #'gofmt-before-save)
+;; (add-hook 'before-save-hook #'gofmt-before-save)
 
 ;; go-code - https://github.com/nsf/gocode
-;;(add-to-list 'load-path (concat (getenv "EDOTDIR") "/lib/go/go-autocomplete"))
-;;(require 'go-autocomplete)
-;;(require 'auto-complete-config)
-;;(ac-config-default)
+(add-to-list 'load-path (concat (getenv "EDOTDIR") "/lib/go/go-autocomplete"))
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
+
+(require 'golint)
+
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook #'gofmt-before-save)

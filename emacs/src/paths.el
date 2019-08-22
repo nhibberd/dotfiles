@@ -35,5 +35,14 @@
 
 
 
-(setenv "PATH" (concat (getenv "PATH") (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))))
+
+(setenv "PATH"
+        (concat (getenv "PATH")
+                (concat
+                  (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))
+                  (concat ":" (concat (getenv "HOME") "/go/bin"))
+                )
+
+        )
+)
 (setq exec-path (append exec-path ' (concat (getenv "EDOTDIR") "/bin/haskell")))
