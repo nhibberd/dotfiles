@@ -30,6 +30,7 @@ export LANG=en_US.UTF-8
 . "$ZDOTDIR/.zsh/zkeybinding"  #destroyed modkey
 [ -f $ZDOTDIR/.zsh/zprivate ] && . "$ZDOTDIR/.zsh/zprivate"
 . "$ZDOTDIR/.zsh/ghc"
+. "$ZDOTDIR/.zsh/nvm"
 . "$ZDOTDIR/.zsh/cabal"
 # . "$ZDOTDIR/.zsh/git-completion.bash"
 
