@@ -32,6 +32,9 @@ g() {
     7.10.2)
       ghc-switch 8.2.2
       ;;
+    8.2.2)
+      ghc-switch 8.4.3
+      ;;
     *)
       ghc-switch 7.10.2
       ;;
