@@ -20,6 +20,7 @@
 (add-path "lib/dash.el")
 (add-path "lib/ace-jump-mode.el")
 (add-path "lib/projectile")
+(add-path "lib/go")
 (add-path "src")
 )
 
@@ -32,5 +33,15 @@
 
 
 
-(setenv "PATH" (concat (getenv "PATH") (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))))
+;; (setenv "PATH" (concat (getenv "PATH") (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))))
+(setenv "PATH"
+        (concat (getenv "PATH")
+                (concat
+                  (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))
+                  (concat ":" (concat (getenv "HOME") "/go/bin"))
+                )
+
+        )
+)
+
 (setq exec-path (append exec-path ' (concat (getenv "EDOTDIR") "/bin/haskell")))

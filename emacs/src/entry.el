@@ -23,5 +23,6 @@
 (load-library "projectile")
 ;;(load-library "functions")
 ;;(load-library "orgmodex")
+(load-library "gox")
 
 (projectile-global-mode)
