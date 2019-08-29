@@ -8,15 +8,17 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.rgba:      rgb
 
+! laptop
 !Xft*dpi: 192
 !Xft.dpi: 192
 
-Xft*dpi:		96
+! monitor
+!Xft*dpi:		96
 
 !Xft.dpi: 110
 !Emacs.dpi: 180
 
-xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=15 ! external
+!xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=15 ! external
 !xterm*faceName:		DejaVu Sans Mono Book:pixelsize=32 ! laptop
 ! xrdb ~/.Xdefaults
 
@@ -53,5 +55,24 @@ xterm*scrollBar: false
 
 Emacs.FontBackend: xft
 dzen2.FontBackend: xft
-dzen2.font:			DejaVu Sans Mono Book:pixelsize=15
+!dzen2.font:			DejaVu Sans Mono Book:pixelsize=15
+!dzen2.font:			DejaVu Sans Mono Book:pixelsize=32
+
+
+! monitor 4k
+Xft*dpi:		146
+xterm*faceName:                 DejaVu Sans Mono Bookj:pixelsize=24 ! external
+dzen2.font:			DejaVu Sans Mono Book:pixelsize=24
+!Emacs.dpi: 96
+
+
+! monitor 2k
+!Xft*dpi:		96
+!xterm*faceName:		DejaVu Sans Mono Bookj:pixelsize=15 ! external
+!dzen2.font:			DejaVu Sans Mono Book:pixelsize=15
+
+! laptop
+!Xft*dpi: 192
+!Xft.dpi: 192
+!xterm*faceName:		DejaVu Sans Mono Book:pixelsize=32 ! laptop
 !dzen2.font:			DejaVu Sans Mono Book:pixelsize=32
