@@ -32,7 +32,7 @@
 
 ;;(set-default-font "DejaVu Sans Mono-16")
 ;;(set-default-font "DejaVu Sans Mono-13")
-(set-default-font "DejaVu Sans Mono-13")
+(set-frame-font "DejaVu Sans Mono-13")
 ;;(set-default-font "DejaVu Sans Mono-10")
 
 ;;(set-face-attribute 'default nil :height 115)
@@ -140,8 +140,10 @@
 (setq next-line-add-newlines nil)                ; Add newline when at buffer end
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(defun nuke_traling ()
+  (add-hook 'before-save-hook #'delete-trailing-whitespace nil t))
 
-
+(add-hook 'prog-mode-hook #'nuke_traling)
 
 (setq backup-directory-alist
           `((".*" . ,temporary-file-directory)))
