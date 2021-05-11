@@ -34,3 +34,5 @@ esac
 mesg y
 
 echo Finished .zprofile
+
+export PATH="$HOME/.cargo/bin:$PATH"

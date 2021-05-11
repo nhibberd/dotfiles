@@ -30,3 +30,5 @@
 
 
 (projectile-global-mode)
+
+(add-to-list 'auto-mode-alist '("\\.bzl\\'" . python-mode))
