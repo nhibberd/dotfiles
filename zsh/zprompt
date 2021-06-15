@@ -30,8 +30,15 @@ esac
 
 autoload -U colors && colors
 
+if [ -n "$AWS_OKTA_PROFILE" ]
+then
+  PS1="[%{$fg[red]%}aws:$AWS_OKTA_PROFILE%{$reset_color%}:%{$fg[blue]%}%m%{$reset_color%}:%.] $PS1"
+else
+  PS1="[%{$fg[blue]%}%m%{$reset_color%}:%.] $PS1"
+fi
+
 #PS1="%S[%m:%.]%s $PS1"
-PS1="[%{$fg[blue]%}%m%{$reset_color%}:%.] $PS1"
+#PS1="[%{$fg[blue]%}%m%{$reset_color%}:%.] $PS1"     # set
 #PS1="[%{$fg[blue]%}\m/%{$reset_color%}:%.] $PS1"
 #PS1="[%{$fg[blue]%}λ%{$reset_color%}:%.] $PS1"
 #PS1="[%{$fg[blue]%}beast%{$reset_color%}:%.] $PS1"
