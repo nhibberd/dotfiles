@@ -13,6 +13,8 @@
 (require 'golint)
 
 (setq gofmt-command "goimports")
+;; (setq gofmt-args '("-local=formation"))
 (add-hook 'before-save-hook #'gofmt-before-save)
 
-(setq-default tab-width 2)
+
+(setq-default tab-width 4)

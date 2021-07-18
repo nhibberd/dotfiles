@@ -23,7 +23,13 @@
 
 (define-abbrev-table 'js-mode-abbrev-table ())
 
+(defun nuke_traling ()
+  (add-hook 'before-save-hook #'delete-trailing-whitespace nil t))
 
+
+(add-hook 'js-mode-hook #'nuke_traling)
+
+;; (setq create-lockfiles nil)
 
 (defun update-fixtag-js (&optional tag)
   (interactive)

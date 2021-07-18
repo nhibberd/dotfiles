@@ -12,6 +12,7 @@
 (add-path "lib/git")
 (add-path "lib/ruby")
 (add-path "lib/haskell")
+(add-path "lib/purescript")
 (add-path "lib/groovy")
 (add-path "lib/auto-complete")
 (add-path "lib/js-comint")
@@ -20,6 +21,7 @@
 (add-path "lib/dash.el")
 (add-path "lib/ace-jump-mode.el")
 (add-path "lib/projectile")
+(add-path "lib/typescript-mode.el")
 (add-path "lib/go")
 (add-path "src")
 )
@@ -32,8 +34,6 @@
 )
 
 
-
-;; (setenv "PATH" (concat (getenv "PATH") (concat ":" (concat (getenv "EDOTDIR") "/bin/haskell"))))
 (setenv "PATH"
         (concat (getenv "PATH")
                 (concat
@@ -43,5 +43,4 @@
 
         )
 )
-
 (setq exec-path (append exec-path ' (concat (getenv "EDOTDIR") "/bin/haskell")))
