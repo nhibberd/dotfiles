@@ -32,6 +32,7 @@ export LANG=en_US.UTF-8
 . "$ZDOTDIR/.zsh/ghc"
 . "$ZDOTDIR/.zsh/nvm"
 . "$ZDOTDIR/.zsh/cabal"
+. "$ZDOTDIR/.zsh/py"
 # . "$ZDOTDIR/.zsh/git-completion.bash"
 
 # Zsh will allow "cd localsubdir" even if CDPATH doesn't have "." or "" in it.

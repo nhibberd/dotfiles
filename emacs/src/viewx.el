@@ -5,6 +5,8 @@
 
 (setq diff-switches "-u")
 
+(setq ring-bell-function #'ignore)
+
 ;; emacs 24
 
 ;; this breaks pasting code

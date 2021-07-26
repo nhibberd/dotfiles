@@ -6,6 +6,9 @@
 
 (global-set-key "\M-?" 'help-command)
 
+;; (global-set-key "\M-<" 'beginning-of-buffer)
+;; (global-set-key "\M->" 'end-of-buffer)
+
 (global-set-key "\C-c\C-k" 'browse-kill-ring)
 
 (define-key global-map (kbd "\C-c SPC") 'ace-jump-mode)
@@ -29,3 +32,10 @@
 (setq ido-everywhere t)
 (setq ido-max-directory-size 100000)
 (ido-mode (quote both))
+
+;; (setq-default mac-option-modifier 'meta)
+;; (setq mac-option-modifier 'meta)
+
+;; sigh
+;; (setq mac-command-modifier 'super)
+;; (setq mac-option-modifier 'meta)
