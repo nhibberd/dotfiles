@@ -34,8 +34,10 @@
 
 ;;(set-default-font "DejaVu Sans Mono-16")
 ;;(set-default-font "DejaVu Sans Mono-13")
-(set-frame-font "DejaVu Sans Mono-13")
 ;;(set-default-font "DejaVu Sans Mono-10")
+
+;;(set-frame-font "DejaVu Sans Mono-13")
+(set-frame-font "DejaVu Sans Mono-15")
 
 ;;(set-face-attribute 'default nil :height 115)
 

@@ -27,7 +27,7 @@
 ;;(load-library "purescriptx")
 (load-library "rustx")
 (load-library "gox")
-(load-library "shell")
+(load-library "shellx")
 
 
 (projectile-global-mode)

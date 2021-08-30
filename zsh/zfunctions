@@ -126,3 +126,29 @@ sr() {
     fi
   fi
 }
+
+
+life() {
+  if [ ! -n "$AWS_SESSION_EXPIRATION" ]; then
+    echo "Not in a session"
+  else
+    now=$(TZ=UTC date +%s)
+    expiry=$(date -j  -f "%Y-%m-%dT%H:%M:%SZ" "$AWS_SESSION_EXPIRATION" +%s)
+
+    secs=$(( (expiry - now) ))
+    echo $(($(($secs - $secs/86400*86400))/3600))h:$(($(($secs - $secs/86400*86400))%3600/60))m:$(($(($secs - $secs/86400*86400))%60))s
+  fi
+}
+
+refresh() {
+  echo "refresh current session"
+
+  echo "todo"
+
+  # AWS_VAULT="" aws-vault exec dev-nick-hibberd-admin -- echo
+  # AWS_ACCESS_KEY_ID
+  # AWS_SECRET_ACCESS_KEY
+  # AWS_SESSION_TOKEN
+  # AWS_SECURITY_TOKEN
+  # AWS_SESSION_EXPIRATION
+}

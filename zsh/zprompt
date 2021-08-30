@@ -30,8 +30,19 @@ esac
 
 autoload -U colors && colors
 
+if [ -n "$AWS_VAULT" ]
+then
+  ACC=aws:$AWS_VAULT
+  if [ "$AWS_VAULT" = "dev-nick-hibberd-admin" ]; then
+    ACC="dev"
+  fi
+  PS1="[%{$fg[red]%}$ACC%{$reset_color%}:%{$fg[blue]%}beast%{$reset_color%}:%.] $PS1"
+else
+  PS1="[%{$fg[blue]%}beast%{$reset_color%}:%.] $PS1"
+fi
+
 #PS1="%S[%m:%.]%s $PS1"
 #PS1="[%{$fg[blue]%}%m%{$reset_color%}:%.] $PS1"
 #PS1="[%{$fg[blue]%}\m/%{$reset_color%}:%.] $PS1"
 #PS1="[%{$fg[blue]%}λ%{$reset_color%}:%.] $PS1"
-PS1="[%{$fg[blue]%}beast%{$reset_color%}:%.] $PS1"
+#PS1="[%{$fg[blue]%}beast%{$reset_color%}:%.] $PS1"
