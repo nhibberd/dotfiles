@@ -11,6 +11,9 @@
 (add-hook 'python-mode-hook 'python-mode-on-init)
 (add-hook 'python-mode-hook 'fuzzit)
 
+(require 'py-yapf)
+(add-hook 'python-mode-hook 'py-yapf-enable-on-save)
+
 (define-abbrev-table 'python-mode-abbrev-table ())
 
 (defun py-unittest ()
