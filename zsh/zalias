@@ -195,11 +195,12 @@ alias bex="box -e beryllium.ap-southeast-2"
 alias six="box -e prod.ap-southeast-1"
 alias usx="box -e prod.us-east-1"
 alias lock="xscreensaver-command --lock"
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+# alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -selection clipboard -o'
 alias k='kubectl'
 # alias s='git for-each-ref --sort=-committerdate --format="%(refname)" refs/heads | fzf --preview="git log {}"'
 alias bb='bazel build'
 alias bt='bazel test'
 alias ro='git reset --hard origin/master'
 alias htop='sudo htop'
+alias fix='aspell check --dont-backup --dont-save-repl'

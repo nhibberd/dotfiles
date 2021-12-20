@@ -33,4 +33,7 @@ esac
 
 mesg y
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 echo Finished .zprofile
+

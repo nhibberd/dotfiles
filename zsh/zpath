@@ -20,6 +20,8 @@ for DIR in \
 	"$HOME/go/bin" \
 	"/usr/local/go/bin" \
 	/Applications/Emacs.app/Contents/MacOS \
+	/Applications/Postgres.app/Contents/Versions/latest/bin \
+	/opt/homebrew/bin \
 	/usr/local/bin /usr/local/sbin \
 	/usr/remote/bin /usr/remote/sbin /usr/remote/kvm \
 	/usr/contrib/bin \
