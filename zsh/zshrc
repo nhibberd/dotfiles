@@ -82,3 +82,9 @@ export PACKAGEROOT="http://mirror.internode.on.net"
 # fpath="$fpath $ZDOTDIR/.zsh/completion"
 
 echo Finished $ZDOTDIR/.zshrc > /dev/tty
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+# Added by Amplify CLI binary installer
+export PATH="$HOME/.amplify/bin:$PATH"

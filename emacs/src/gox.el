@@ -16,7 +16,6 @@
 (require 'golint)
 
 (setq gofmt-command "goimports")
-(setq gofmt-args '("-local=github.com/panther-labs"))
 (add-hook 'before-save-hook #'gofmt-before-save)
 
 
