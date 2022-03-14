@@ -122,7 +122,6 @@ sr() {
     R_BRANCH=$(echo $S_BRANCH | sed -e 's@refs/remotes/origin/@@')
     if [ ! -z "$R_BRANCH" ]; then
       git checkout $R_BRANCH
-#      print -z "git checkout $R_BRANCH"
     fi
   fi
 }

@@ -34,6 +34,7 @@ for DIR in \
 	/usr/5bin /etc /usr/etc /usr/local/etc /usr/new \
 	/usr/X11R6/bin /usr/X11R5/bin /usr/bin/X11 /usr/openwin/bin \
 	/usr/local/java/bin \
+	/Applications/Postgres.app/Contents/Versions/latest/bin \
 	/var/spool/MHSnet/_bin \
 	${REPOSITORY:+"$REPOSITORY/bin"} \
 	${REPOSITORY:+"$REPOSITORY/newrepos/bin"} \
