@@ -1,0 +1,17 @@
+export AWS_PROFILE=identity
+
+export AWS_DEFAULT_REGION=us-west-2
+export AWS_REGION=us-west-2
+
+# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# gpg-connect-agent updatestartuptty /bye > /dev/null
+
+
+# Yubikey
+alias yk="ssh-add -s /usr/local/lib/libykcs11_nolink.dylib"
+alias ykr="ssh-add -e /usr/local/lib/libykcs11_nolink.dylib"
+
+# dev
+
+alias dev="aws-vault exec --duration=4h dev-nick-hibberd-admin"
+

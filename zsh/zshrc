@@ -21,6 +21,7 @@ export LANG=en_US.UTF-8
 [ -f $HOME/.etc/termcap ] && export TERMCAP=$HOME/.etc/termcap
 [ -d $HOME/.terminfo ] && export TERMINFO=$HOME/.terminfo
 
+[ -f $ZDOTDIR/.zsh/panther ] && . "$ZDOTDIR/.zsh/panther"
 . "$ZDOTDIR/.zsh/zpath"
 . "$ZDOTDIR/.zsh/zprompt"
 . "$ZDOTDIR/.zsh/zquirks"
@@ -80,5 +81,7 @@ export PACKAGEROOT="http://mirror.internode.on.net"
 [ -f $HOME/etc/environments ] && source $HOME/etc/environments
 
 # fpath="$fpath $ZDOTDIR/.zsh/completion"
+
+
 
 echo Finished $ZDOTDIR/.zshrc > /dev/tty
