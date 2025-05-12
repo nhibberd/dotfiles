@@ -38,7 +38,7 @@ then
   fi
   PS1="[%{$fg[red]%}$ACC%{$reset_color%}:%{$fg[blue]%}beast%{$reset_color%}:%.] $PS1"
 else
-  PS1="[%{$fg[blue]%}beast%{$reset_color%}:%.] $PS1"
+  PS1="[%{$fg[blue]%}air%{$reset_color%}:%.] $PS1"
 fi
 
 #PS1="%S[%m:%.]%s $PS1"

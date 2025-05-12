@@ -88,3 +88,11 @@ export PATH="$HOME/.serverless/bin:$PATH"
 
 # Added by Amplify CLI binary installer
 export PATH="$HOME/.amplify/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/nick/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
